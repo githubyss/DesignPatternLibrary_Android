@@ -57,13 +57,11 @@ fun factoryMethod() {
     leifeng4.buyRice()
     println()
 
-    val factoryUserOperator: IFactoryUserOperator = FactoryUserOperatorSqlServer()
-    val userOperatorSqlServer: IUserOperator = factoryUserOperator.create()
+    val factoryDatabaseOperator: IFactoryDatabaseOperator = FactoryDatabaseOperatorSqlServer()
+    val userOperatorSqlServer: IUserOperator = factoryDatabaseOperator.createUserOperator()
     userOperatorSqlServer.insert(User(0, "用户0"))
-    println()
 
-    val factoryDepartmentOperator: IFactoryDepartmentOperator = FactoryDepartmentOperatorSqlServer()
-    val departmentOperatorSqlServer: IDepartmentOperator = factoryDepartmentOperator.create()
+    val departmentOperatorSqlServer: IDepartmentOperator = factoryDatabaseOperator.createDepartmentOperator()
     departmentOperatorSqlServer.insert(Department(0, "部门0"))
     println()
 }

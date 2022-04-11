@@ -4,6 +4,10 @@ import com.githubyss.design_pattern.test.POST_NUMBER
 import com.githubyss.design_pattern.test.PREFIX
 import com.githubyss.design_pattern.test.PRE_NUMBER
 import com.githubyss.design_pattern.test.entity.car.ICar
+import com.githubyss.design_pattern.test.entity.database_operator.Department
+import com.githubyss.design_pattern.test.entity.database_operator.IDepartmentOperator
+import com.githubyss.design_pattern.test.entity.database_operator.IUserOperator
+import com.githubyss.design_pattern.test.entity.database_operator.User
 import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
 import com.githubyss.design_pattern.test.entity.math_operator.IOperatorDyadic
 import com.githubyss.design_pattern.test.entity.math_operator.IOperatorUnary
@@ -51,5 +55,15 @@ fun factoryMethod() {
     leifeng2.wash()
     leifeng3.buyRice()
     leifeng4.buyRice()
+    println()
+
+    val factoryUserOperator: IFactoryUserOperator = FactoryUserOperatorSqlServer()
+    val userOperatorSqlServer: IUserOperator = factoryUserOperator.create()
+    userOperatorSqlServer.insert(User(0, "用户0"))
+    println()
+
+    val factoryDepartmentOperator: IFactoryDepartmentOperator = FactoryDepartmentOperatorSqlServer()
+    val departmentOperatorSqlServer: IDepartmentOperator = factoryDepartmentOperator.create()
+    departmentOperatorSqlServer.insert(Department(0, "部门0"))
     println()
 }

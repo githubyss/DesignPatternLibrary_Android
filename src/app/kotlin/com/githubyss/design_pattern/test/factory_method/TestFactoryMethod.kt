@@ -60,8 +60,10 @@ fun factoryMethod() {
     val factoryDatabaseOperator: IFactoryDatabaseOperator = FactoryDatabaseOperatorSqlServer()
     val userOperatorSqlServer: IUserOperator = factoryDatabaseOperator.createUserOperator()
     userOperatorSqlServer.insert(User(0, "用户0"))
+    userOperatorSqlServer.getUser(0)
 
     val departmentOperatorSqlServer: IDepartmentOperator = factoryDatabaseOperator.createDepartmentOperator()
     departmentOperatorSqlServer.insert(Department(0, "部门0"))
+    departmentOperatorSqlServer.getDepartment(0)
     println()
 }

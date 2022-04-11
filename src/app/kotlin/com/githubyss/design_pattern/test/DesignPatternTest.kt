@@ -6,6 +6,7 @@ import com.githubyss.design_pattern.test.facade.facade
 import com.githubyss.design_pattern.test.factory_abstract.factoryAbstract
 import com.githubyss.design_pattern.test.factory_method.factoryMethod
 import com.githubyss.design_pattern.test.factory_simple.factorySimple
+import com.githubyss.design_pattern.test.observer.observer
 import com.githubyss.design_pattern.test.prototype.prototype
 import com.githubyss.design_pattern.test.proxy.proxy
 import com.githubyss.design_pattern.test.strategy.strategy
@@ -86,4 +87,5 @@ fun main(args: Array<String>) {
     templateMethod()
     facade()
     builder()
+    observer()
 }

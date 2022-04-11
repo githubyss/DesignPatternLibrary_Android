@@ -1,11 +1,15 @@
 package com.githubyss.design_pattern.test.template_method
 
-import com.githubyss.design_pattern.test.entity.exam.ExamPaper
-import com.githubyss.design_pattern.test.entity.exam.ExamPaperA
-import com.githubyss.design_pattern.test.entity.exam.ExamPaperB
+import com.githubyss.design_pattern.test.PREFIX
+import com.githubyss.design_pattern.test.template_method.exam.ExamPaper
+import com.githubyss.design_pattern.test.template_method.exam.ExamPaperA
+import com.githubyss.design_pattern.test.template_method.exam.ExamPaperB
 
 
 fun templateMethod() {
+    println("$PREFIX TemplateMethod 模板方法模式")
+    println()
+
     println("学生A抄的试卷：")
     val examPaperA: ExamPaper = ExamPaperA()
     examPaperA.question1()

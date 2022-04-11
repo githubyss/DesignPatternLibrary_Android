@@ -1,6 +1,10 @@
 package com.githubyss.design_pattern.test.factory_abstract
 
+import com.githubyss.design_pattern.factory_abstract.FactoryAbstract
+import com.githubyss.design_pattern.factory_abstract.FactoryConcrete
+import com.githubyss.design_pattern.factory_abstract.FactoryConcreteInline
 import com.githubyss.design_pattern.test.POST_NUMBER
+import com.githubyss.design_pattern.test.PREFIX
 import com.githubyss.design_pattern.test.PRE_NUMBER
 import com.githubyss.design_pattern.test.entity.car.CarJeep
 import com.githubyss.design_pattern.test.entity.car.CarSport
@@ -8,16 +12,16 @@ import com.githubyss.design_pattern.test.entity.car.ICar
 import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
 import com.githubyss.design_pattern.test.entity.leifeng.LeifengUndergraduate
 import com.githubyss.design_pattern.test.entity.leifeng.LeifengVolunteer
-import com.githubyss.design_pattern.factory_abstract.FactoryAbstract
-import com.githubyss.design_pattern.factory_abstract.FactoryConcrete
-import com.githubyss.design_pattern.factory_abstract.FactoryConcreteInline
+import com.githubyss.design_pattern.test.entity.math_operator.*
 import com.githubyss.design_pattern.test.entity.ship.IShip
 import com.githubyss.design_pattern.test.entity.ship.ShipCruise
 import com.githubyss.design_pattern.test.entity.ship.ShipWar
-import com.githubyss.design_pattern.test.entity.math_operator.*
 
 
 fun factoryAbstract() {
+    println("$PREFIX FactoryAbstract 抽象工厂模式")
+    println()
+
     val shipFactory: FactoryAbstract<IShip> = FactoryConcrete<IShip>()
     val shipCruise: IShip? = shipFactory.create<ShipCruise>(ShipCruise::class.java)
     shipCruise?.let {

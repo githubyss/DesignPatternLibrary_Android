@@ -1,13 +1,8 @@
 package com.githubyss.design_pattern.test.builder
 
-import com.githubyss.design_pattern.test.entity.person_builder.PersonBuilderAbstract
-import com.githubyss.design_pattern.test.entity.person_builder.PersonBuilderFat
-import com.githubyss.design_pattern.test.entity.person_builder.PersonBuilderThin
-import com.githubyss.design_pattern.test.entity.person_builder.draw.DrawCanvas
-import com.githubyss.design_pattern.test.entity.person_builder.draw.DrawPaint
-import com.githubyss.design_pattern.test.entity.product_builder.ProductBuilderAbstract
-import com.githubyss.design_pattern.test.entity.product_builder.ProductBuilderConcrete1
-import com.githubyss.design_pattern.test.entity.product_builder.ProductBuilderConcrete2
+import com.githubyss.design_pattern.test.PREFIX
+import com.githubyss.design_pattern.test.builder.person_builder.*
+import com.githubyss.design_pattern.test.builder.product_builder.*
 
 
 /**
@@ -28,10 +23,12 @@ import com.githubyss.design_pattern.test.entity.product_builder.ProductBuilderCo
  * @createdTime 2022/04/07 14:34:20
  */
 fun builder() {
+    println("$PREFIX Builder 建造者模式")
+    println()
+
     val canvas: DrawCanvas = DrawCanvas()
     val paint: DrawPaint = DrawPaint()
 
-    println("Builder 模式")
     val personBuilderThin: PersonBuilderAbstract = PersonBuilderThin(canvas, paint)
     val personBuilderFat: PersonBuilderAbstract = PersonBuilderFat(canvas, paint)
     var personBuilderDirector: PersonBuilderDirector = PersonBuilderDirector(personBuilderThin)
@@ -49,7 +46,9 @@ fun builder() {
     product2.show()
     println()
 
-    println("Builder 模式 & AbstractFactory 模式")
+
+    println("$PREFIX Builder 建造者模式 & AbstractFactory 抽象工厂模式")
+
     PersonBuilderDirectorByFactory.buildByJClassInline<PersonBuilderThin>(canvas, paint)
     PersonBuilderDirectorByFactory.buildByKClassInline<PersonBuilderFat>(canvas, paint)
     PersonBuilderDirectorByFactory.buildByJClass<PersonBuilderThin>(canvas, paint)

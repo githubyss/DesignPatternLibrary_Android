@@ -1,6 +1,7 @@
 package com.githubyss.design_pattern.test.factory_method
 
 import com.githubyss.design_pattern.test.POST_NUMBER
+import com.githubyss.design_pattern.test.PREFIX
 import com.githubyss.design_pattern.test.PRE_NUMBER
 import com.githubyss.design_pattern.test.entity.car.ICar
 import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
@@ -11,6 +12,9 @@ import com.githubyss.design_pattern.test.entity.ship.ShipWar
 
 
 fun factoryMethod() {
+    println("$PREFIX FactoryMethod 工厂方法模式")
+    println()
+
     val shipCruise: IShip = FactoryShipCruise.create()
     val shipWar: IShip = FactoryShipWar.create()
     shipCruise.weighAnchor()

@@ -1,7 +1,7 @@
 package com.githubyss.design_pattern.test.entity.finery
 
 
-class FinerySneaker : AbsFinery() {
+class FinerySneaker : FineryAbstract() {
     override fun show() {
         println("破球鞋")
     }

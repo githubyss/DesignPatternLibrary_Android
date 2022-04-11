@@ -1,7 +1,8 @@
 package com.githubyss.design_pattern.test.facade
 
-import com.githubyss.design_pattern.test.entity.stock.Fund
-import com.githubyss.design_pattern.test.entity.stock.IStock
+import com.githubyss.design_pattern.test.PREFIX
+import com.githubyss.design_pattern.test.facade.stock.Fund
+import com.githubyss.design_pattern.test.facade.stock.IStock
 
 
 /**
@@ -20,6 +21,9 @@ import com.githubyss.design_pattern.test.entity.stock.IStock
  * @createdTime 2022/04/07 11:06:14
  */
 fun facade() {
+    println("$PREFIX Facade 外观模式")
+    println()
+
     val fund: IStock = Fund()
     fund.buy()
     fund.sell()

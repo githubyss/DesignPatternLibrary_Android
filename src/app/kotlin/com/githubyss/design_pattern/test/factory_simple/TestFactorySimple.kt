@@ -1,6 +1,7 @@
 package com.githubyss.design_pattern.test.factory_simple
 
 import com.githubyss.design_pattern.test.POST_NUMBER
+import com.githubyss.design_pattern.test.PREFIX
 import com.githubyss.design_pattern.test.PRE_NUMBER
 import com.githubyss.design_pattern.test.entity.car.CarType
 import com.githubyss.design_pattern.test.entity.car.ICar
@@ -16,6 +17,9 @@ import com.githubyss.design_pattern.test.entity.ship.ShipWar
 
 
 fun factorySimple() {
+    println("$PREFIX FactorySimple 简单工厂模式")
+    println()
+
     val shipCruise: IShip = FactoryShip.create(ShipType.CRUISE_SHIP)
     val shipWar: IShip = FactoryShip.create(ShipType.WAR_SHIP)
     shipCruise.weighAnchor()

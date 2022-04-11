@@ -1,7 +1,7 @@
 package com.githubyss.design_pattern.test.proxy
 
-import com.githubyss.design_pattern.test.entity.give_gift.IGiveGift
-import com.githubyss.design_pattern.test.entity.give_gift.SchoolGirl
+import com.githubyss.design_pattern.test.proxy.give_gift.IGiveGift
+import com.githubyss.design_pattern.test.proxy.give_gift.SchoolGirl
 
 
 data class Actual(var name: String) : IGiveGift {

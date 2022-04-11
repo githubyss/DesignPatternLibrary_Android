@@ -1,5 +1,6 @@
 package com.githubyss.design_pattern.test.observer.boss_monitor
 
+
 class SubjectBoss(name: String) : SubjectAbstractWithName(name) {
     // 观察者列表
     private val observers: ArrayList<ObserverAbstractWithName> = ArrayList<ObserverAbstractWithName>()

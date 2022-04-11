@@ -68,12 +68,13 @@ import com.githubyss.design_pattern.test.template_method.templateMethod
  * @createdTime 2022/03/09 17:53:07
  */
 
-const val PREFIX=">>>>>"
+const val PREFIX = ">>>>>"
 const val PRE_NUMBER = 3.0
 const val POST_NUMBER = 9.0
 
 fun main(args: Array<String>) {
     println(args)
+    println()
 
     factorySimple()
     factoryMethod()

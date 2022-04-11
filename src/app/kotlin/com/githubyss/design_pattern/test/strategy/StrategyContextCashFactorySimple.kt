@@ -7,12 +7,12 @@ import com.githubyss.design_pattern.test.entity.cash.CashStrategyReturn
 
 class StrategyContextCashFactorySimple(private var type: String) {
     fun acceptCash(money: Double): Double {
-        val cash = when (type) {
+        val cashStrategy = when (type) {
             "正常收费" -> CashStrategyNormal()
             "打8折" -> CashStrategyRebate(0.8)
             "满300返100" -> CashStrategyReturn(300.0, 100.0)
             else -> CashStrategyNormal()
         }
-        return cash.acceptCash(money)
+        return cashStrategy.acceptCash(money)
     }
 }

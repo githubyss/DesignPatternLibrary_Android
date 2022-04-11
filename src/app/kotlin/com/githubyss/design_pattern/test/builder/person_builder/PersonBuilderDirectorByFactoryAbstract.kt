@@ -5,7 +5,7 @@ import com.githubyss.design_pattern.factory_abstract.FactoryConcrete
 import com.githubyss.design_pattern.factory_abstract.FactoryConcreteInline
 
 
-object PersonBuilderDirectorByFactory {
+object PersonBuilderDirectorByFactoryAbstract {
     inline fun <reified B : PersonBuilderAbstract> buildByJClassInline(canvas: DrawCanvas, paint: DrawPaint) {
         val factory: FactoryConcreteInline<B> = FactoryConcreteInline<B>()
         val builder: PersonBuilderAbstract? = factory.create<B>(initArgs = arrayOf(canvas, paint))

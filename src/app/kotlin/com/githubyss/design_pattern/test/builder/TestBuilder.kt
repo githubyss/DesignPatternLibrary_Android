@@ -46,16 +46,16 @@ fun builder() {
     product2.show()
     println()
 
-
     println("$PREFIX Builder 建造者模式 & AbstractFactory 抽象工厂模式")
-
-    PersonBuilderDirectorByFactory.buildByJClassInline<PersonBuilderThin>(canvas, paint)
-    PersonBuilderDirectorByFactory.buildByKClassInline<PersonBuilderFat>(canvas, paint)
-    PersonBuilderDirectorByFactory.buildByJClass<PersonBuilderThin>(canvas, paint)
-    PersonBuilderDirectorByFactory.buildByKClass<PersonBuilderFat>(canvas, paint)
     println()
 
-    ProductBuilderDirectorByFactory.build<ProductBuilderConcrete1>()?.show()
-    ProductBuilderDirectorByFactory.build<ProductBuilderConcrete2>()?.show()
+    PersonBuilderDirectorByFactoryAbstract.buildByJClassInline<PersonBuilderThin>(canvas, paint)
+    PersonBuilderDirectorByFactoryAbstract.buildByKClassInline<PersonBuilderFat>(canvas, paint)
+    PersonBuilderDirectorByFactoryAbstract.buildByJClass<PersonBuilderThin>(canvas, paint)
+    PersonBuilderDirectorByFactoryAbstract.buildByKClass<PersonBuilderFat>(canvas, paint)
+    println()
+
+    ProductBuilderDirectorByFactoryAbstract.build<ProductBuilderConcrete1>()?.show()
+    ProductBuilderDirectorByFactoryAbstract.build<ProductBuilderConcrete2>()?.show()
     println()
 }

@@ -70,8 +70,14 @@ import com.githubyss.design_pattern.test.template_method.templateMethod
  */
 
 const val PREFIX = ">>>>>"
+
 const val PRE_NUMBER = 3.0
 const val POST_NUMBER = 9.0
+
+const val MONEY: Double = 1000.0
+const val MONEY_REBATE: Double = 0.8
+const val MONEY_CONDITION: Double = 300.0
+const val MONEY_RETURN: Double = 100.0
 
 fun main(args: Array<String>) {
     println(args)

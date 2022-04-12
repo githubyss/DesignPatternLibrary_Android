@@ -1,9 +1,8 @@
 package com.githubyss.design_pattern.test.factory_method
 
-import com.githubyss.design_pattern.test.POST_NUMBER
-import com.githubyss.design_pattern.test.PREFIX
-import com.githubyss.design_pattern.test.PRE_NUMBER
+import com.githubyss.design_pattern.test.*
 import com.githubyss.design_pattern.test.entity.car.ICar
+import com.githubyss.design_pattern.test.entity.cash.ICashStrategy
 import com.githubyss.design_pattern.test.entity.database_operator.Department
 import com.githubyss.design_pattern.test.entity.database_operator.IDepartmentOperator
 import com.githubyss.design_pattern.test.entity.database_operator.IUserOperator
@@ -19,6 +18,7 @@ fun factoryMethod() {
     println("$PREFIX FactoryMethod 工厂方法模式")
     println()
 
+
     val shipCruise: IShip = FactoryShipCruise.create()
     val shipWar: IShip = FactoryShipWar.create()
     shipCruise.weighAnchor()
@@ -28,6 +28,7 @@ fun factoryMethod() {
     (shipWar as ShipWar).launchMissile()
     println()
 
+
     val carSport: ICar = FactoryCarSport.create()
     val carJeep: ICar = FactoryCarJeep.create()
     carSport.drive()
@@ -35,6 +36,7 @@ fun factoryMethod() {
     carJeep.drive()
     carJeep.selfNavigation()
     println()
+
 
     val operatorEqu: IOperatorUnary = FactoryOperatorEqu.create() as IOperatorUnary
     val operatorAdd: IOperatorDyadic = FactoryOperatorAdd.create() as IOperatorDyadic
@@ -47,23 +49,53 @@ fun factoryMethod() {
     println("$PRE_NUMBER ${operatorDiv.operator()} $POST_NUMBER ${operatorEqu.operator()} ${operatorDiv.calculate(PRE_NUMBER, POST_NUMBER)}}")
     println()
 
-    val leifeng1: Leifeng = FactoryLeifengUndergraduate.create()
-    val leifeng2: Leifeng = FactoryLeifengUndergraduate.create()
-    val leifeng3: Leifeng = FactoryLeifengUndergraduate.create()
-    val leifeng4: Leifeng = FactoryLeifengVolunteer.create()
-    leifeng1.sweep()
-    leifeng2.wash()
-    leifeng3.buyRice()
-    leifeng4.buyRice()
+
+    var factoryLeifeng: IFactoryLeifeng = FactoryLeifengUndergraduate()
+
+    val leifengXiaoMing: Leifeng = factoryLeifeng.create()
+    val leifengDaBao: Leifeng = factoryLeifeng.create()
+    val leifengTuTu: Leifeng = factoryLeifeng.create()
+
+    factoryLeifeng = FactoryLeifengVolunteer()
+
+    val leifengLaoDu: Leifeng = factoryLeifeng.create()
+
+    leifengXiaoMing.sweep()
+    leifengDaBao.wash()
+    leifengTuTu.buyRice()
+    leifengLaoDu.buyRice()
     println()
 
-    val factoryDatabaseOperator: IFactoryDatabaseOperator = FactoryDatabaseOperatorSqlServer()
-    val userOperatorSqlServer: IUserOperator = factoryDatabaseOperator.createUserOperator()
-    userOperatorSqlServer.insert(User(0, "用户0"))
-    userOperatorSqlServer.getUser(0)
 
-    val departmentOperatorSqlServer: IDepartmentOperator = factoryDatabaseOperator.createDepartmentOperator()
-    departmentOperatorSqlServer.insert(Department(0, "部门0"))
-    departmentOperatorSqlServer.getDepartment(0)
+    val cashStrategyNormal: ICashStrategy = FactoryCashStrategyNormal().create()
+    val cashStrategyRebate: ICashStrategy = FactoryCashStrategyRebate(MONEY_REBATE).create()
+    val cashStrategyReturn: ICashStrategy = FactoryCashStrategyReturn(MONEY_CONDITION, MONEY_RETURN).create()
+
+    cashStrategyNormal.acceptCash(MONEY)
+    cashStrategyRebate.acceptCash(MONEY)
+    cashStrategyReturn.acceptCash(MONEY)
+    println()
+
+
+    var factoryDatabaseOperator: IFactoryDatabaseOperator = FactoryDatabaseOperatorSqlServer()
+
+    var userOperator: IUserOperator = factoryDatabaseOperator.createUserOperator()
+    userOperator.insert(User(0, "用户0"))
+    userOperator.getUser(0)
+
+    var departmentOperator: IDepartmentOperator = factoryDatabaseOperator.createDepartmentOperator()
+    departmentOperator.insert(Department(0, "部门0"))
+    departmentOperator.getDepartment(0)
+
+    factoryDatabaseOperator = FactoryDatabaseOperatorAccess()
+
+    userOperator = factoryDatabaseOperator.createUserOperator()
+    userOperator.insert(User(0, "用户0"))
+    userOperator.getUser(0)
+
+    departmentOperator = factoryDatabaseOperator.createDepartmentOperator()
+    departmentOperator.insert(Department(0, "部门0"))
+    departmentOperator.getDepartment(0)
+
     println()
 }

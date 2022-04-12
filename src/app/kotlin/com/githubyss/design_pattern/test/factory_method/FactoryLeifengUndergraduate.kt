@@ -4,7 +4,7 @@ import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
 import com.githubyss.design_pattern.test.entity.leifeng.LeifengUndergraduate
 
 
-object FactoryLeifengUndergraduate : IFactoryLeifeng {
+class FactoryLeifengUndergraduate : IFactoryLeifeng {
     override fun create(): Leifeng {
         return LeifengUndergraduate()
     }

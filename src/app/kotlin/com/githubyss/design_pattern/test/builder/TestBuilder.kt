@@ -26,34 +26,42 @@ fun builder() {
     println("$PREFIX Builder 建造者模式")
     println()
 
+
     val canvas: DrawCanvas = DrawCanvas()
     val paint: DrawPaint = DrawPaint()
 
     val personBuilderThin: PersonBuilderAbstract = PersonBuilderThin(canvas, paint)
     val personBuilderFat: PersonBuilderAbstract = PersonBuilderFat(canvas, paint)
     var personBuilderDirector: PersonBuilderDirector = PersonBuilderDirector(personBuilderThin)
+
     personBuilderDirector.build()
     personBuilderDirector = PersonBuilderDirector(personBuilderFat)
     personBuilderDirector.build()
     println()
 
+
     val productBuilderConcrete1: ProductBuilderAbstract = ProductBuilderConcrete1()
     val productBuilderConcrete2: ProductBuilderAbstract = ProductBuilderConcrete2()
     val productBuilderDirector: ProductBuilderDirector = ProductBuilderDirector()
+
     val product1 = productBuilderDirector.build(productBuilderConcrete1)
     product1.show()
     val product2 = productBuilderDirector.build(productBuilderConcrete2)
     product2.show()
     println()
 
+
+
     println("$PREFIX Builder 建造者模式 & AbstractFactory 抽象工厂模式")
     println()
+
 
     PersonBuilderDirectorByFactoryAbstract.buildByJClassInline<PersonBuilderThin>(canvas, paint)
     PersonBuilderDirectorByFactoryAbstract.buildByKClassInline<PersonBuilderFat>(canvas, paint)
     PersonBuilderDirectorByFactoryAbstract.buildByJClass<PersonBuilderThin>(canvas, paint)
     PersonBuilderDirectorByFactoryAbstract.buildByKClass<PersonBuilderFat>(canvas, paint)
     println()
+
 
     ProductBuilderDirectorByFactoryAbstract.build<ProductBuilderConcrete1>()?.show()
     ProductBuilderDirectorByFactoryAbstract.build<ProductBuilderConcrete2>()?.show()

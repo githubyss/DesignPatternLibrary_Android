@@ -4,7 +4,7 @@ import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
 import com.githubyss.design_pattern.test.entity.leifeng.LeifengVolunteer
 
 
-object FactoryLeifengVolunteer : IFactoryLeifeng {
+class FactoryLeifengVolunteer : IFactoryLeifeng {
     override fun create(): Leifeng {
         return LeifengVolunteer()
     }

@@ -1,8 +1,8 @@
-package com.githubyss.design_pattern.test.factory_abstract
+package com.githubyss.design_pattern.test.factory_method_reflect
 
-import com.githubyss.design_pattern.factory_abstract.FactoryConcrete
-import com.githubyss.design_pattern.factory_abstract.FactoryConcreteInline
-import com.githubyss.design_pattern.factory_abstract.IFactory
+import com.githubyss.design_pattern.factory.FactoryReflect
+import com.githubyss.design_pattern.factory.FactoryReflectInline
+import com.githubyss.design_pattern.factory.IFactory
 import com.githubyss.design_pattern.test.*
 import com.githubyss.design_pattern.test.entity.car.CarJeep
 import com.githubyss.design_pattern.test.entity.car.CarSport
@@ -21,34 +21,34 @@ import com.githubyss.design_pattern.test.entity.ship.ShipCruise
 import com.githubyss.design_pattern.test.entity.ship.ShipWar
 
 
-fun factoryAbstract() {
-    println("$PREFIX FactoryAbstract 抽象工厂模式")
+fun factoryMethodReflect() {
+    println("$PREFIX FactoryMethodReflect 工厂方法模式（反射实现）")
     println()
 
 
-    val shipCruise: IShip = FactoryConcrete<IShip>().create<ShipCruise>(ShipCruise::class.java)
+    val shipCruise: IShip = FactoryReflect<IShip>().create<ShipCruise>(ShipCruise::class.java)
     shipCruise.weighAnchor()
     shipCruise.dropAnchor()
 
-    val shipWar: IShip = FactoryConcrete<IShip>().create<ShipWar>(ShipWar::class)
+    val shipWar: IShip = FactoryReflect<IShip>().create<ShipWar>(ShipWar::class)
     shipWar.weighAnchor()
     shipWar.dropAnchor()
     (shipWar as ShipWar).launchMissile()
     println()
 
 
-    val carSport: ICar = FactoryConcreteInline<ICar>().create<CarSport>()
+    val carSport: ICar = FactoryReflectInline<ICar>().create<CarSport>()
     carSport.drive()
     carSport.selfNavigation()
 
-    val carJeep: ICar = FactoryConcreteInline<ICar>().create<CarJeep>()
+    val carJeep: ICar = FactoryReflectInline<ICar>().create<CarJeep>()
     carJeep.drive()
     carJeep.selfNavigation()
     println()
 
 
-    val factoryOperatorUnary: FactoryConcreteInline<IOperatorUnary> = FactoryConcreteInline<IOperatorUnary>()
-    val factoryOperatorDyadic: FactoryConcreteInline<IOperatorDyadic> = FactoryConcreteInline<IOperatorDyadic>()
+    val factoryOperatorUnary: FactoryReflectInline<IOperatorUnary> = FactoryReflectInline<IOperatorUnary>()
+    val factoryOperatorDyadic: FactoryReflectInline<IOperatorDyadic> = FactoryReflectInline<IOperatorDyadic>()
 
     val operatorEqu: IOperatorUnary = factoryOperatorUnary.create<OperatorEqu>()
     val operatorAdd: IOperatorDyadic = factoryOperatorDyadic.create<OperatorAdd>()
@@ -63,7 +63,7 @@ fun factoryAbstract() {
     println()
 
 
-    val factoryLeifeng: FactoryConcreteInline<Leifeng> = FactoryConcreteInline<Leifeng>()
+    val factoryLeifeng: FactoryReflectInline<Leifeng> = FactoryReflectInline<Leifeng>()
 
     val leifengXiaoMing: Leifeng = factoryLeifeng.create<LeifengUndergraduate>()
     val leifengDaBao: Leifeng = factoryLeifeng.create<LeifengUndergraduate>()
@@ -77,7 +77,7 @@ fun factoryAbstract() {
     println()
 
 
-    val factoryCashStrategy: IFactory<ICashStrategy> = FactoryConcrete<ICashStrategy>()
+    val factoryCashStrategy: IFactory<ICashStrategy> = FactoryReflect<ICashStrategy>()
     val cashStrategyNormal: ICashStrategy = factoryCashStrategy.create<CashStrategyNormal>(CashStrategyNormal::class)
     val cashStrategyRebate: ICashStrategy = factoryCashStrategy.create<CashStrategyRebate>(CashStrategyRebate::class, MONEY_REBATE)
     val cashStrategyReturn: ICashStrategy = factoryCashStrategy.create<CashStrategyReturn>(CashStrategyReturn::class, MONEY_CONDITION, MONEY_RETURN)
@@ -88,7 +88,7 @@ fun factoryAbstract() {
     println()
 
 
-    val factoryUserOperator: IFactory<IUserOperator> = FactoryConcrete<IUserOperator>()
+    val factoryUserOperator: IFactory<IUserOperator> = FactoryReflect<IUserOperator>()
 
     var userOperator: IUserOperator = factoryUserOperator.create<UserOperatorSqlServer>(UserOperatorSqlServer::class)
     userOperator.insert(User(0, "用户0"))
@@ -98,7 +98,7 @@ fun factoryAbstract() {
     userOperator.insert(User(0, "用户0"))
     userOperator.getUser(0)
 
-    val factoryDepartmentOperator: IFactory<IDepartmentOperator> = FactoryConcrete<IDepartmentOperator>()
+    val factoryDepartmentOperator: IFactory<IDepartmentOperator> = FactoryReflect<IDepartmentOperator>()
 
     var departmentOperator: IDepartmentOperator = factoryDepartmentOperator.create<DepartmentOperatorSqlServer>(DepartmentOperatorSqlServer::class)
     departmentOperator.insert(Department(0, "部门0"))

@@ -1,4 +1,4 @@
-package com.githubyss.design_pattern.factory_abstract
+package com.githubyss.design_pattern.factory
 
 import java.lang.reflect.Constructor
 import kotlin.reflect.KClass
@@ -7,28 +7,32 @@ import kotlin.reflect.full.createInstance
 
 
 /**
- * FactoryConcrete
- * 具体工厂
+ * FactoryReflect
+ *
+ * 通过反射构建具体工厂。
+ * 普通函数实现，需要传入待创建的具体类的泛型指定，确并需要传入待创建的具体类的 Class 实例做为参数。
+ *
+ * 设计模式对应工厂方法模式，因为是根据具体类构建具体对象，没有条件判断。
  *
  * @author Ace Yan
  * @github githubyss
  * @createdTime 2022/03/09 14:24:20
  */
-class FactoryConcrete<I> : FactoryAbstract<I>() {
+class FactoryReflect<I> : IFactory<I> {
     companion object {
-        private val TAG: String = FactoryConcrete::class.java.simpleName
+        private val TAG: String = FactoryReflect::class.java.simpleName
     }
 
     /**
      * 构建实例
      *
-     * FactoryConcrete<I>().create<E>(E::class.java)
+     * FactoryReflect<I>().create<E>(E::class.java)
      *
-     * FactoryConcrete<I>().create<E>(E::class.java, arg1, arg2)
+     * FactoryReflect<I>().create<E>(E::class.java, arg1, arg2)
      *
-     * FactoryConcrete<I>().create<E>(E::class.java, arrayOf(arg1, arg2))
+     * FactoryReflect<I>().create<E>(E::class.java, arrayOf(arg1, arg2))
      *
-     * FactoryConcrete<I>().create<E>(clazz = E::class.java, initArgs = arrayOf(arg1, arg2))
+     * FactoryReflect<I>().create<E>(clazz = E::class.java, initArgs = arrayOf(arg1, arg2))
      *
      * @param clazz
      * @param initArgs

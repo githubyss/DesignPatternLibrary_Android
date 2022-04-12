@@ -15,7 +15,7 @@ import com.githubyss.design_pattern.test.entity.ship.ShipWar
 
 
 fun factoryMethod() {
-    println("$PREFIX FactoryMethod 工厂方法模式")
+    println("$PREFIX FactoryMethod 工厂方法模式（普通实现）")
     println()
 
 

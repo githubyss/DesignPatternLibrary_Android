@@ -1,7 +1,5 @@
-package com.githubyss.design_pattern.factory_abstract
+package com.githubyss.design_pattern.factory
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.lang.reflect.Constructor
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
@@ -9,27 +7,32 @@ import kotlin.reflect.full.createInstance
 
 
 /**
- * FactoryConcreteInline
+ * FactoryReflectInline
+ *
+ * 通过反射构建具体工厂。
+ * Inline 函数实现，可以根据传入的泛型，确定待创建的具体类的 Class 实例。
+ *
+ * 设计模式对应工厂方法模式，因为是根据具体类构建具体对象，没有条件判断。
  *
  * @author Ace Yan
  * @github githubyss
  * @createdTime 2022/03/09 15:46:13
  */
-class FactoryConcreteInline<I> {
+class FactoryReflectInline<I> {
     companion object {
-        val TAG: String = FactoryConcreteInline::class.java.simpleName
+        val TAG: String = FactoryReflectInline::class.java.simpleName
     }
 
     /**
      * 构建实例
      *
-     * FactoryConcreteInline<I>().create<E>(arg1, arg2)
+     * FactoryReflectInline<I>().create<E>(arg1, arg2)
      *
-     * FactoryConcreteInline<I>().create<E>(arg1, arg2, true)
+     * FactoryReflectInline<I>().create<E>(arg1, arg2, true)
      *
-     * FactoryConcreteInline<I>().create<E>(arrayOf(arg1, arg2), true)
+     * FactoryReflectInline<I>().create<E>(arrayOf(arg1, arg2), true)
      *
-     * FactoryConcreteInline<I>().create<E>(initArgs = arrayOf(arg1, arg2), byKClass = true)
+     * FactoryReflectInline<I>().create<E>(initArgs = arrayOf(arg1, arg2), byKClass = true)
      *
      * @param initArgs
      * @param byKClass

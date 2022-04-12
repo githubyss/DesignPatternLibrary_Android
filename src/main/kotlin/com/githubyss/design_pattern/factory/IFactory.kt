@@ -1,4 +1,4 @@
-package com.githubyss.design_pattern.factory_abstract
+package com.githubyss.design_pattern.factory
 
 
 /**

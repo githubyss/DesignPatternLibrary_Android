@@ -9,6 +9,6 @@ package com.githubyss.design_pattern.factory_abstract
  * @github githubyss
  * @createdTime 2022/03/09 14:21:54
  */
-abstract class FactoryAbstract<I> {
-    abstract fun <E : I> create(clazz: Any, vararg initArgs: Any = emptyArray()): E?
+abstract class FactoryAbstract<I> : IFactory<I> {
+    abstract override fun <E : I> create(clazz: Any, vararg initArgs: Any): E
 }

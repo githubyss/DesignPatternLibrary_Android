@@ -7,54 +7,46 @@ import com.githubyss.design_pattern.factory_abstract.FactoryConcreteInline
 
 object PersonBuilderDirectorByFactoryAbstract {
     inline fun <reified B : PersonBuilderAbstract> buildByJClassInline(canvas: DrawCanvas, paint: DrawPaint) {
-        val factory: FactoryConcreteInline<B> = FactoryConcreteInline<B>()
-        val builder: PersonBuilderAbstract? = factory.create<B>(initArgs = arrayOf(canvas, paint))
-        builder?.let {
-            builder.addHead()
-            builder.addBody()
-            builder.addArmLeft()
-            builder.addArmRight()
-            builder.addLegLeft()
-            builder.addLegRight()
-        }
+        val factory: FactoryConcreteInline<PersonBuilderAbstract> = FactoryConcreteInline<PersonBuilderAbstract>()
+        val builder: PersonBuilderAbstract = factory.create<B>(canvas, paint)
+        builder.addHead()
+        builder.addBody()
+        builder.addArmLeft()
+        builder.addArmRight()
+        builder.addLegLeft()
+        builder.addLegRight()
     }
 
     inline fun <reified B : PersonBuilderAbstract> buildByKClassInline(canvas: DrawCanvas, paint: DrawPaint) {
-        val factory: FactoryConcreteInline<B> = FactoryConcreteInline<B>()
-        val builder: PersonBuilderAbstract? = factory.create<B>(true, canvas, paint)
-        builder?.let {
-            builder.addHead()
-            builder.addBody()
-            builder.addArmLeft()
-            builder.addArmRight()
-            builder.addLegLeft()
-            builder.addLegRight()
-        }
+        val factory: FactoryConcreteInline<PersonBuilderAbstract> = FactoryConcreteInline<PersonBuilderAbstract>()
+        val builder: PersonBuilderAbstract = factory.create<B>(canvas, paint, byKClass = true)
+        builder.addHead()
+        builder.addBody()
+        builder.addArmLeft()
+        builder.addArmRight()
+        builder.addLegLeft()
+        builder.addLegRight()
     }
 
     inline fun <reified B : PersonBuilderAbstract> buildByJClass(canvas: DrawCanvas, paint: DrawPaint) {
-        val factory: FactoryAbstract<B> = FactoryConcrete<B>()
-        val builder: PersonBuilderAbstract? = factory.create<B>(B::class.java, canvas, paint)
-        builder?.let {
-            builder.addHead()
-            builder.addBody()
-            builder.addArmLeft()
-            builder.addArmRight()
-            builder.addLegLeft()
-            builder.addLegRight()
-        }
+        val factory: FactoryAbstract<PersonBuilderAbstract> = FactoryConcrete<PersonBuilderAbstract>()
+        val builder: PersonBuilderAbstract = factory.create<B>(B::class.java, canvas, paint)
+        builder.addHead()
+        builder.addBody()
+        builder.addArmLeft()
+        builder.addArmRight()
+        builder.addLegLeft()
+        builder.addLegRight()
     }
 
     inline fun <reified B : PersonBuilderAbstract> buildByKClass(canvas: DrawCanvas, paint: DrawPaint) {
-        val factory: FactoryAbstract<B> = FactoryConcrete<B>()
-        val builder: PersonBuilderAbstract? = factory.create<B>(B::class, canvas, paint)
-        builder?.let {
-            builder.addHead()
-            builder.addBody()
-            builder.addArmLeft()
-            builder.addArmRight()
-            builder.addLegLeft()
-            builder.addLegRight()
-        }
+        val factory: FactoryAbstract<PersonBuilderAbstract> = FactoryConcrete<PersonBuilderAbstract>()
+        val builder: PersonBuilderAbstract = factory.create<B>(B::class, canvas, paint)
+        builder.addHead()
+        builder.addBody()
+        builder.addArmLeft()
+        builder.addArmRight()
+        builder.addLegLeft()
+        builder.addLegRight()
     }
 }

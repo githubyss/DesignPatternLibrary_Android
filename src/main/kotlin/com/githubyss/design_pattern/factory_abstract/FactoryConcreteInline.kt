@@ -20,10 +20,26 @@ class FactoryConcreteInline<I> {
         val TAG: String = FactoryConcreteInline::class.java.simpleName
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    inline fun <reified E : I> create(byKClass: Boolean = false, vararg initArgs: Any = emptyArray()): E? {
-        var entity: I? = null
+    /**
+     * 构建实例
+     *
+     * FactoryConcreteInline<I>().create<E>(arg1, arg2)
+     *
+     * FactoryConcreteInline<I>().create<E>(arg1, arg2, true)
+     *
+     * FactoryConcreteInline<I>().create<E>(arrayOf(arg1, arg2), true)
+     *
+     * FactoryConcreteInline<I>().create<E>(initArgs = arrayOf(arg1, arg2), byKClass = true)
+     *
+     * @param initArgs
+     * @param byKClass
+     * @return
+     */
+    inline fun <reified E : I> create(vararg initArgs: Any = emptyArray(), byKClass: Boolean = false): E {
+        var entity: E? = null
         val argsSize = initArgs.size
+        var argsSizeMatched: Boolean = false
+
         val clazz: Any = when (byKClass) {
             true -> E::class
             false -> E::class.java
@@ -34,13 +50,13 @@ class FactoryConcreteInline<I> {
                 0 -> {
                     entity = when (clazz) {
                         is Class<*> -> {
-                            Class.forName(clazz.name).newInstance() as I?
+                            Class.forName(clazz.name).newInstance() as E
                         }
                         is KClass<*> -> {
-                            clazz.createInstance() as I?
+                            clazz.createInstance() as E
                         }
                         else -> {
-                            null
+                            throw Exception("Type of clazz must be Class<*> or KClass<*>.")
                         }
                     }
                 }
@@ -50,14 +66,15 @@ class FactoryConcreteInline<I> {
                             val constructors: Array<Constructor<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
+                                    argsSizeMatched = true
                                     entity = when (argsSize) {
                                         1 -> it.newInstance(initArgs[0])
                                         2 -> it.newInstance(initArgs[0], initArgs[1])
                                         3 -> it.newInstance(initArgs[0], initArgs[1], initArgs[2])
                                         4 -> it.newInstance(initArgs[0], initArgs[1], initArgs[2], initArgs[3])
                                         5 -> it.newInstance(initArgs[0], initArgs[1], initArgs[2], initArgs[3], initArgs[4])
-                                        else -> null
-                                    } as I?
+                                        else -> throw Exception("No Constructor<*>.newInstance(...) match the args.")
+                                    } as E
                                 }
                             }
                         }
@@ -65,22 +82,24 @@ class FactoryConcreteInline<I> {
                             val constructors: Collection<KFunction<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
+                                    argsSizeMatched = true
                                     entity = when (argsSize) {
                                         1 -> it.call(initArgs[0])
                                         2 -> it.call(initArgs[0], initArgs[1])
                                         3 -> it.call(initArgs[0], initArgs[1], initArgs[2])
                                         4 -> it.call(initArgs[0], initArgs[1], initArgs[2], initArgs[3])
                                         5 -> it.call(initArgs[0], initArgs[1], initArgs[2], initArgs[3], initArgs[4])
-                                        else -> null
-                                    } as I?
+                                        else -> throw Exception("No KFunction<*>.call(...) match the args.")
+                                    } as E
                                 }
                             }
                         }
                         else -> {
-                            entity = null
+                            throw Exception("Type of clazz must be Class<*> or KClass<*>.")
                         }
                     }
 
+                    if (!argsSizeMatched) throw Exception("No constructor in clazz.constructors match the args size.")
                 }
             }
         }
@@ -89,11 +108,14 @@ class FactoryConcreteInline<I> {
             // logE(TAG, t = e)
         }
 
+        entity ?: throw NullPointerException("Return entity must not be null.")
+
         return try {
-            entity as E?
+            entity as E
         }
         catch (e: TypeCastException) {
-            null
+            e.printStackTrace()
+            throw TypeCastException(e.message)
         }
     }
 }

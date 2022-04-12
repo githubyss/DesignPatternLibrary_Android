@@ -20,9 +20,10 @@ fun factoryMethod() {
 
 
     val shipCruise: IShip = FactoryShipCruise.create()
-    val shipWar: IShip = FactoryShipWar.create()
     shipCruise.weighAnchor()
     shipCruise.dropAnchor()
+
+    val shipWar: IShip = FactoryShipWar.create()
     shipWar.weighAnchor()
     shipWar.dropAnchor()
     (shipWar as ShipWar).launchMissile()
@@ -30,9 +31,10 @@ fun factoryMethod() {
 
 
     val carSport: ICar = FactoryCarSport.create()
-    val carJeep: ICar = FactoryCarJeep.create()
     carSport.drive()
     carSport.selfNavigation()
+
+    val carJeep: ICar = FactoryCarJeep.create()
     carJeep.drive()
     carJeep.selfNavigation()
     println()

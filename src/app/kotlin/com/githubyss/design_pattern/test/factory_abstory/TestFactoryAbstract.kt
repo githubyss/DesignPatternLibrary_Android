@@ -11,6 +11,7 @@ import com.githubyss.design_pattern.test.factory_abstory.database_operator.Datab
 import com.githubyss.design_pattern.test.factory_abstory.database_operator.DatabaseOperatorByFactorySimpleWithReflect
 import com.githubyss.design_pattern.test.factory_abstory.database_operator.FactoryDatabaseSqlServer
 import com.githubyss.design_pattern.test.factory_abstory.database_operator.IFactoryDatabase
+import com.githubyss.design_pattern.test.factory_abstory.vegetable.*
 
 
 /**
@@ -62,6 +63,24 @@ fun factoryAbstract() {
     projectTable.insert(project)
     projectTable.getProject(id)
     println()
+
+
+    val factoryVegetableOrdinary: IFactoryVegetable = FactoryVegetableOrdinary()
+
+    val vegetableCucumberOrdinary: IVegetableCucumber = factoryVegetableOrdinary.createCucumber()
+    vegetableCucumberOrdinary.seed()
+    vegetableCucumberOrdinary.grow()
+    vegetableCucumberOrdinary.ripen()
+
+    val vegetablePotatoOrdinary: IVegetablePotato = factoryVegetableOrdinary.createPotato()
+    vegetablePotatoOrdinary.seed()
+    vegetablePotatoOrdinary.grow()
+    vegetablePotatoOrdinary.ripen()
+
+    val vegetableTomatoOrdinary: IVegetableTomato = factoryVegetableOrdinary.createTomato()
+    vegetableTomatoOrdinary.seed()
+    vegetableTomatoOrdinary.grow()
+    vegetableTomatoOrdinary.ripen()
 
 
 

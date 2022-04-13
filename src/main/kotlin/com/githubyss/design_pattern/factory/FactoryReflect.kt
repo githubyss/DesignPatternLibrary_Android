@@ -18,7 +18,7 @@ import kotlin.reflect.full.createInstance
  * @github githubyss
  * @createdTime 2022/03/09 14:24:20
  */
-class FactoryReflect<I> : IFactory<I> {
+class FactoryReflect<I> : IFactoryReflect<I> {
     companion object {
         private val TAG: String = FactoryReflect::class.java.simpleName
     }

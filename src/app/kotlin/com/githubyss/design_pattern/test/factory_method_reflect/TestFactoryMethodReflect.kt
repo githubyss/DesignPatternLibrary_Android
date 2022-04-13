@@ -2,7 +2,7 @@ package com.githubyss.design_pattern.test.factory_method_reflect
 
 import com.githubyss.design_pattern.factory.FactoryReflect
 import com.githubyss.design_pattern.factory.FactoryReflectInline
-import com.githubyss.design_pattern.factory.IFactory
+import com.githubyss.design_pattern.factory.IFactoryReflect
 import com.githubyss.design_pattern.test.*
 import com.githubyss.design_pattern.test.entity.car.CarJeep
 import com.githubyss.design_pattern.test.entity.car.CarSport
@@ -76,7 +76,7 @@ fun factoryMethodReflect() {
     println()
 
 
-    val factoryCashStrategy: IFactory<ICashStrategy> = FactoryReflect<ICashStrategy>()
+    val factoryCashStrategy: IFactoryReflect<ICashStrategy> = FactoryReflect<ICashStrategy>()
     val cashStrategyNormal: ICashStrategy = factoryCashStrategy.create<CashStrategyNormal>(CashStrategyNormal::class)
     val cashStrategyRebate: ICashStrategy = factoryCashStrategy.create<CashStrategyRebate>(CashStrategyRebate::class, MONEY_REBATE)
     val cashStrategyReturn: ICashStrategy = factoryCashStrategy.create<CashStrategyReturn>(CashStrategyReturn::class, MONEY_CONDITION, MONEY_RETURN)

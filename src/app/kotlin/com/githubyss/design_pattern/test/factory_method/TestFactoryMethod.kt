@@ -8,6 +8,10 @@ import com.githubyss.design_pattern.test.entity.math_operator.IOperatorDyadic
 import com.githubyss.design_pattern.test.entity.math_operator.IOperatorUnary
 import com.githubyss.design_pattern.test.entity.ship.IShip
 import com.githubyss.design_pattern.test.entity.ship.ShipWar
+import com.githubyss.design_pattern.test.factory_method.fruit.FactoryVegetableCucumber
+import com.githubyss.design_pattern.test.factory_method.fruit.FactoryVegetablePotato
+import com.githubyss.design_pattern.test.factory_method.fruit.FactoryVegetableTomato
+import com.githubyss.design_pattern.test.factory_method.fruit.IVegetable
 
 
 /**
@@ -97,5 +101,22 @@ fun factoryMethod() {
     cashStrategyNormal.acceptCash(MONEY)
     cashStrategyRebate.acceptCash(MONEY)
     cashStrategyReturn.acceptCash(MONEY)
+    println()
+
+
+    val vegetableCucumber: IVegetable = FactoryVegetableCucumber().createVegetable()
+    vegetableCucumber.seed()
+    vegetableCucumber.grow()
+    vegetableCucumber.ripen()
+
+    val vegetablePotato: IVegetable = FactoryVegetablePotato().createVegetable()
+    vegetablePotato.seed()
+    vegetablePotato.grow()
+    vegetablePotato.ripen()
+
+    val vegetableTomato: IVegetable = FactoryVegetableTomato().createVegetable()
+    vegetableTomato.seed()
+    vegetableTomato.grow()
+    vegetableTomato.ripen()
     println()
 }

@@ -2,7 +2,7 @@ package com.githubyss.design_pattern.test.builder.person_builder
 
 import com.githubyss.design_pattern.factory.FactoryReflect
 import com.githubyss.design_pattern.factory.FactoryReflectInline
-import com.githubyss.design_pattern.factory.IFactory
+import com.githubyss.design_pattern.factory.IFactoryReflect
 
 
 object PersonBuilderDirectorByFactoryMethodReflect {
@@ -29,7 +29,7 @@ object PersonBuilderDirectorByFactoryMethodReflect {
     }
 
     inline fun <reified B : PersonBuilderAbstract> buildByJClass(canvas: DrawCanvas, paint: DrawPaint) {
-        val factory: IFactory<PersonBuilderAbstract> = FactoryReflect<PersonBuilderAbstract>()
+        val factory: IFactoryReflect<PersonBuilderAbstract> = FactoryReflect<PersonBuilderAbstract>()
         val builder: PersonBuilderAbstract = factory.create<B>(B::class.java, canvas, paint)
         builder.addHead()
         builder.addBody()
@@ -40,7 +40,7 @@ object PersonBuilderDirectorByFactoryMethodReflect {
     }
 
     inline fun <reified B : PersonBuilderAbstract> buildByKClass(canvas: DrawCanvas, paint: DrawPaint) {
-        val factory: IFactory<PersonBuilderAbstract> = FactoryReflect<PersonBuilderAbstract>()
+        val factory: IFactoryReflect<PersonBuilderAbstract> = FactoryReflect<PersonBuilderAbstract>()
         val builder: PersonBuilderAbstract = factory.create<B>(B::class, canvas, paint)
         builder.addHead()
         builder.addBody()

@@ -3,8 +3,9 @@ package com.githubyss.design_pattern.test
 import com.githubyss.design_pattern.test.builder.builder
 import com.githubyss.design_pattern.test.decorator.decorator
 import com.githubyss.design_pattern.test.facade.facade
-import com.githubyss.design_pattern.test.factory_method_reflect.factoryMethodReflect
+import com.githubyss.design_pattern.test.factory_abstory.factoryAbstract
 import com.githubyss.design_pattern.test.factory_method.factoryMethod
+import com.githubyss.design_pattern.test.factory_method_reflect.factoryMethodReflect
 import com.githubyss.design_pattern.test.factory_simple.factorySimple
 import com.githubyss.design_pattern.test.observer.observer
 import com.githubyss.design_pattern.test.prototype.prototype
@@ -86,6 +87,7 @@ fun main(args: Array<String>) {
     factorySimple()
     factoryMethod()
     factoryMethodReflect()
+    factoryAbstract()
     strategy()
     decorator()
     proxy()

@@ -3,10 +3,6 @@ package com.githubyss.design_pattern.test.factory_method
 import com.githubyss.design_pattern.test.*
 import com.githubyss.design_pattern.test.entity.car.ICar
 import com.githubyss.design_pattern.test.entity.cash.ICashStrategy
-import com.githubyss.design_pattern.test.entity.database_operator.Department
-import com.githubyss.design_pattern.test.entity.database_operator.IDepartmentOperator
-import com.githubyss.design_pattern.test.entity.database_operator.IUserOperator
-import com.githubyss.design_pattern.test.entity.database_operator.User
 import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
 import com.githubyss.design_pattern.test.entity.math_operator.IOperatorDyadic
 import com.githubyss.design_pattern.test.entity.math_operator.IOperatorUnary
@@ -76,28 +72,5 @@ fun factoryMethod() {
     cashStrategyNormal.acceptCash(MONEY)
     cashStrategyRebate.acceptCash(MONEY)
     cashStrategyReturn.acceptCash(MONEY)
-    println()
-
-
-    var factoryDatabaseOperator: IFactoryDatabaseOperator = FactoryDatabaseOperatorSqlServer()
-
-    var userOperator: IUserOperator = factoryDatabaseOperator.createUserOperator()
-    userOperator.insert(User(0, "用户0"))
-    userOperator.getUser(0)
-
-    var departmentOperator: IDepartmentOperator = factoryDatabaseOperator.createDepartmentOperator()
-    departmentOperator.insert(Department(0, "部门0"))
-    departmentOperator.getDepartment(0)
-
-    factoryDatabaseOperator = FactoryDatabaseOperatorAccess()
-
-    userOperator = factoryDatabaseOperator.createUserOperator()
-    userOperator.insert(User(0, "用户0"))
-    userOperator.getUser(0)
-
-    departmentOperator = factoryDatabaseOperator.createDepartmentOperator()
-    departmentOperator.insert(Department(0, "部门0"))
-    departmentOperator.getDepartment(0)
-
     println()
 }

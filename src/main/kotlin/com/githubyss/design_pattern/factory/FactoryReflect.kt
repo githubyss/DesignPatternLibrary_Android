@@ -10,7 +10,7 @@ import kotlin.reflect.full.createInstance
  * FactoryReflect
  *
  * 通过反射构建具体工厂。
- * 普通函数实现，需要传入待创建的具体类的泛型指定，确并需要传入待创建的具体类的 Class 实例做为参数。
+ * 普通函数实现，需要传入待创建的具体类的泛型指定，并且需要传入待创建的具体类的类引用 kotlin：KClass java：Class 做为参数。
  *
  * 设计模式对应工厂方法模式，因为是根据具体类构建具体对象，没有条件判断。
  *
@@ -26,12 +26,16 @@ class FactoryReflect<I> : IFactory<I> {
     /**
      * 构建实例
      *
+     * FactoryReflect<I>().create<E>(E::class)
      * FactoryReflect<I>().create<E>(E::class.java)
      *
+     * FactoryReflect<I>().create<E>(E::class, arg1, arg2)
      * FactoryReflect<I>().create<E>(E::class.java, arg1, arg2)
      *
+     * FactoryReflect<I>().create<E>(E::class, arrayOf(arg1, arg2))
      * FactoryReflect<I>().create<E>(E::class.java, arrayOf(arg1, arg2))
      *
+     * FactoryReflect<I>().create<E>(clazz = E::class, initArgs = arrayOf(arg1, arg2))
      * FactoryReflect<I>().create<E>(clazz = E::class.java, initArgs = arrayOf(arg1, arg2))
      *
      * @param clazz
@@ -47,10 +51,11 @@ class FactoryReflect<I> : IFactory<I> {
             when (argsSize) {
                 0 -> {
                     entity = when (clazz) {
-                        is Class<*> -> {
-                            Class.forName(clazz.name).newInstance() as E
+                        is Class<out Any> -> {
+                            clazz.newInstance() as E
+                            // Class.forName(clazz.name).newInstance() as E
                         }
-                        is KClass<*> -> {
+                        is KClass<out Any> -> {
                             clazz.createInstance() as E
                         }
                         else -> {
@@ -60,7 +65,7 @@ class FactoryReflect<I> : IFactory<I> {
                 }
                 else -> {
                     when (clazz) {
-                        is Class<*> -> {
+                        is Class<out Any> -> {
                             val constructors: Array<Constructor<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
@@ -76,7 +81,7 @@ class FactoryReflect<I> : IFactory<I> {
                                 }
                             }
                         }
-                        is KClass<*> -> {
+                        is KClass<out Any> -> {
                             val constructors: Collection<KFunction<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {

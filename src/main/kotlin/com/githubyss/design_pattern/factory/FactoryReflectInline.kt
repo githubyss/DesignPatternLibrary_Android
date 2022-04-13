@@ -52,10 +52,11 @@ class FactoryReflectInline<I> {
             when (argsSize) {
                 0 -> {
                     entity = when (clazz) {
-                        is Class<*> -> {
-                            Class.forName(clazz.name).newInstance() as E
+                        is Class<out Any> -> {
+                            clazz.newInstance() as E
+                            // Class.forName(clazz.name).newInstance() as E
                         }
-                        is KClass<*> -> {
+                        is KClass<out Any> -> {
                             clazz.createInstance() as E
                         }
                         else -> {
@@ -65,7 +66,7 @@ class FactoryReflectInline<I> {
                 }
                 else -> {
                     when (clazz) {
-                        is Class<*> -> {
+                        is Class<out Any> -> {
                             val constructors: Array<Constructor<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
@@ -81,7 +82,7 @@ class FactoryReflectInline<I> {
                                 }
                             }
                         }
-                        is KClass<*> -> {
+                        is KClass<out Any> -> {
                             val constructors: Collection<KFunction<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {

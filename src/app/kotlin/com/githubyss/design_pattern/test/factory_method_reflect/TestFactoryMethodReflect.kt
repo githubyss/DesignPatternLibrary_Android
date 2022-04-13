@@ -11,7 +11,6 @@ import com.githubyss.design_pattern.test.entity.cash.CashStrategyNormal
 import com.githubyss.design_pattern.test.entity.cash.CashStrategyRebate
 import com.githubyss.design_pattern.test.entity.cash.CashStrategyReturn
 import com.githubyss.design_pattern.test.entity.cash.ICashStrategy
-import com.githubyss.design_pattern.test.entity.database_operator.*
 import com.githubyss.design_pattern.test.entity.leifeng.Leifeng
 import com.githubyss.design_pattern.test.entity.leifeng.LeifengUndergraduate
 import com.githubyss.design_pattern.test.entity.leifeng.LeifengVolunteer
@@ -85,27 +84,5 @@ fun factoryMethodReflect() {
     cashStrategyNormal.acceptCash(MONEY)
     cashStrategyRebate.acceptCash(MONEY)
     cashStrategyReturn.acceptCash(MONEY)
-    println()
-
-
-    val factoryUserOperator: IFactory<IUserOperator> = FactoryReflect<IUserOperator>()
-
-    var userOperator: IUserOperator = factoryUserOperator.create<UserOperatorSqlServer>(UserOperatorSqlServer::class)
-    userOperator.insert(User(0, "用户0"))
-    userOperator.getUser(0)
-
-    userOperator = factoryUserOperator.create<UserOperatorAccess>(UserOperatorAccess::class)
-    userOperator.insert(User(0, "用户0"))
-    userOperator.getUser(0)
-
-    val factoryDepartmentOperator: IFactory<IDepartmentOperator> = FactoryReflect<IDepartmentOperator>()
-
-    var departmentOperator: IDepartmentOperator = factoryDepartmentOperator.create<DepartmentOperatorSqlServer>(DepartmentOperatorSqlServer::class)
-    departmentOperator.insert(Department(0, "部门0"))
-    departmentOperator.getDepartment(0)
-
-    departmentOperator = factoryDepartmentOperator.create<DepartmentOperatorAccess>(DepartmentOperatorAccess::class)
-    departmentOperator.insert(Department(0, "部门0"))
-    departmentOperator.getDepartment(0)
     println()
 }

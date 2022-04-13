@@ -27,6 +27,7 @@ import com.githubyss.design_pattern.test.observer.by_interface.SubjectConcreteBy
  * @github githubyss
  * @createdTime 2022/04/11 10:21:47
  */
+
 fun observer() {
     println("$PREFIX Observer 观察者模式")
     println()

@@ -20,6 +20,7 @@ import com.githubyss.design_pattern.test.facade.stock.IStock
  * @github githubyss
  * @createdTime 2022/04/07 11:06:14
  */
+
 fun facade() {
     println("$PREFIX Facade 外观模式")
     println()

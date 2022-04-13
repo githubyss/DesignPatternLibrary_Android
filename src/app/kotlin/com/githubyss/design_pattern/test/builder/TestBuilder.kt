@@ -22,6 +22,7 @@ import com.githubyss.design_pattern.test.builder.product_builder.*
  * @github githubyss
  * @createdTime 2022/04/07 14:34:20
  */
+
 fun builder() {
     println("$PREFIX Builder 建造者模式")
     println()

@@ -1,4 +1,4 @@
-package com.githubyss.design_pattern.test.factory_abstory
+package com.githubyss.design_pattern.test.factory_abstory.database_operator
 
 import com.githubyss.design_pattern.test.entity.data_operator.department.DepartmentTableSqlServer
 import com.githubyss.design_pattern.test.entity.data_operator.department.IDepartmentTable

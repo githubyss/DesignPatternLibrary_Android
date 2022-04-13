@@ -7,6 +7,10 @@ import com.githubyss.design_pattern.test.entity.data_operator.project.IProjectTa
 import com.githubyss.design_pattern.test.entity.data_operator.project.Project
 import com.githubyss.design_pattern.test.entity.data_operator.user.IUserTable
 import com.githubyss.design_pattern.test.entity.data_operator.user.User
+import com.githubyss.design_pattern.test.factory_abstory.database_operator.DatabaseOperatorByFactorySimple
+import com.githubyss.design_pattern.test.factory_abstory.database_operator.DatabaseOperatorByFactorySimpleWithReflect
+import com.githubyss.design_pattern.test.factory_abstory.database_operator.FactoryDatabaseSqlServer
+import com.githubyss.design_pattern.test.factory_abstory.database_operator.IFactoryDatabase
 
 
 /**

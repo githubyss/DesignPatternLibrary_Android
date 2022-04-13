@@ -52,18 +52,18 @@ fun builder() {
 
 
 
-    println("$PREFIX Builder 建造者模式 & AbstractFactory 抽象工厂模式")
+    println("$PREFIX Builder 建造者模式 & FactoryMethodReflect 工厂方法模式（反射实现）")
     println()
 
 
-    PersonBuilderDirectorByFactoryAbstract.buildByJClassInline<PersonBuilderThin>(canvas, paint)
-    PersonBuilderDirectorByFactoryAbstract.buildByKClassInline<PersonBuilderFat>(canvas, paint)
-    PersonBuilderDirectorByFactoryAbstract.buildByJClass<PersonBuilderThin>(canvas, paint)
-    PersonBuilderDirectorByFactoryAbstract.buildByKClass<PersonBuilderFat>(canvas, paint)
+    PersonBuilderDirectorByFactoryMethodReflect.buildByJClassInline<PersonBuilderThin>(canvas, paint)
+    PersonBuilderDirectorByFactoryMethodReflect.buildByKClassInline<PersonBuilderFat>(canvas, paint)
+    PersonBuilderDirectorByFactoryMethodReflect.buildByJClass<PersonBuilderThin>(canvas, paint)
+    PersonBuilderDirectorByFactoryMethodReflect.buildByKClass<PersonBuilderFat>(canvas, paint)
     println()
 
 
-    ProductBuilderDirectorByFactoryAbstract.build<ProductBuilderConcrete1>()?.show()
-    ProductBuilderDirectorByFactoryAbstract.build<ProductBuilderConcrete2>()?.show()
+    ProductBuilderDirectorByFactoryMethodReflect.build<ProductBuilderConcrete1>()?.show()
+    ProductBuilderDirectorByFactoryMethodReflect.build<ProductBuilderConcrete2>()?.show()
     println()
 }

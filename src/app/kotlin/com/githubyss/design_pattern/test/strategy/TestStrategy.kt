@@ -35,12 +35,12 @@ fun strategy() {
 
 
 
-    println("$PREFIX Strategy 策略模式 & AbstractFactory 抽象工厂模式")
+    println("$PREFIX Strategy 策略模式 & FactoryMethodReflect 工厂方法模式（反射实现）")
     println()
 
 
-    StrategyContextCashFactoryAbstract.acceptCash<CashStrategyNormal>(money = MONEY)
-    StrategyContextCashFactoryAbstract.acceptCash<CashStrategyRebate>(money = MONEY, moneyRebate = MONEY_REBATE)
-    StrategyContextCashFactoryAbstract.acceptCash<CashStrategyReturn>(money = MONEY, moneyCondition = MONEY_CONDITION, moneyReturn = MONEY_RETURN)
+    StrategyContextCashFactoryMethodReflect.acceptCash<CashStrategyNormal>(money = MONEY)
+    StrategyContextCashFactoryMethodReflect.acceptCash<CashStrategyRebate>(money = MONEY, moneyRebate = MONEY_REBATE)
+    StrategyContextCashFactoryMethodReflect.acceptCash<CashStrategyReturn>(money = MONEY, moneyCondition = MONEY_CONDITION, moneyReturn = MONEY_RETURN)
     println()
 }

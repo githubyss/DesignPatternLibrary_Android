@@ -3,7 +3,7 @@ package com.githubyss.design_pattern.test
 import com.githubyss.design_pattern.test.builder.builder
 import com.githubyss.design_pattern.test.decorator.decorator
 import com.githubyss.design_pattern.test.facade.facade
-import com.githubyss.design_pattern.test.factory_abstory.factoryAbstract
+import com.githubyss.design_pattern.test.factory_abstract.factoryAbstract
 import com.githubyss.design_pattern.test.factory_method.factoryMethod
 import com.githubyss.design_pattern.test.factory_method_reflect.factoryMethodReflect
 import com.githubyss.design_pattern.test.factory_simple.factorySimple

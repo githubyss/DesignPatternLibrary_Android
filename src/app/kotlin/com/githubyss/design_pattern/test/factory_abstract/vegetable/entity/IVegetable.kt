@@ -1,0 +1,8 @@
+package com.githubyss.design_pattern.test.factory_abstract.vegetable.entity
+
+
+interface IVegetable {
+    fun seed()
+    fun grow()
+    fun ripen()
+}

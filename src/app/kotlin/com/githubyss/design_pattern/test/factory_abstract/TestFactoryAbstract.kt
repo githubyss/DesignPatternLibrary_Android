@@ -1,16 +1,16 @@
 package com.githubyss.design_pattern.test.factory_abstract
 
 import com.githubyss.design_pattern.test.PREFIX
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.DatabaseOperatorByFactorySimple
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.DatabaseOperatorByFactorySimpleWithReflect
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.FactoryDatabaseSqlServer
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.IFactoryDatabase
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.department.Department
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.department.IDepartmentTable
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.project.IProjectTable
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.project.Project
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.user.IUserTable
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.user.User
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.department.Department
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.department.IDepartmentTable
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.project.IProjectTable
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.project.Project
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.user.IUserTable
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.user.User
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.IFactoryDatabase
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.normal_abstract.FactoryDatabaseSqlServer
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.with_factory_simple.FactoryDatabaseOperatorWithFactorySimple
+import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.with_factory_simple_and_reflect.FactoryDatabaseOperatorWithFactorySimpleAndReflect
 import com.githubyss.design_pattern.test.factory_abstract.vegetable.entity.cucumber.IVegetableCucumber
 import com.githubyss.design_pattern.test.factory_abstract.vegetable.entity.potato.IVegetablePotato
 import com.githubyss.design_pattern.test.factory_abstract.vegetable.entity.tomato.IVegetableTomato
@@ -95,15 +95,15 @@ fun factoryAbstract() {
     println()
 
 
-    val userTableByFactorySimple: IUserTable = DatabaseOperatorByFactorySimple.createUserTable()
+    val userTableByFactorySimple: IUserTable = FactoryDatabaseOperatorWithFactorySimple.createUserTable()
     userTableByFactorySimple.insert(user)
     userTableByFactorySimple.getUser(id)
 
-    val departmentTableByFactorySimple: IDepartmentTable = DatabaseOperatorByFactorySimple.createDepartmentTable()
+    val departmentTableByFactorySimple: IDepartmentTable = FactoryDatabaseOperatorWithFactorySimple.createDepartmentTable()
     departmentTableByFactorySimple.insert(department)
     departmentTableByFactorySimple.getDepartment(id)
 
-    val projectTableByFactorySimple: IProjectTable = DatabaseOperatorByFactorySimple.createProjectTable()
+    val projectTableByFactorySimple: IProjectTable = FactoryDatabaseOperatorWithFactorySimple.createProjectTable()
     projectTableByFactorySimple.insert(project)
     projectTableByFactorySimple.getProject(id)
     println()
@@ -131,15 +131,15 @@ fun factoryAbstract() {
     println()
 
 
-    val userTableByFactorySimpleWithReflect: IUserTable = DatabaseOperatorByFactorySimpleWithReflect.createUserTable()
+    val userTableByFactorySimpleWithReflect: IUserTable = FactoryDatabaseOperatorWithFactorySimpleAndReflect.createUserTable()
     userTableByFactorySimpleWithReflect.insert(user)
     userTableByFactorySimpleWithReflect.getUser(id)
 
-    val departmentTableByFactorySimpleWithReflect: IDepartmentTable = DatabaseOperatorByFactorySimpleWithReflect.createDepartmentTable()
+    val departmentTableByFactorySimpleWithReflect: IDepartmentTable = FactoryDatabaseOperatorWithFactorySimpleAndReflect.createDepartmentTable()
     departmentTableByFactorySimpleWithReflect.insert(department)
     departmentTableByFactorySimpleWithReflect.getDepartment(id)
 
-    val projectTableByFactorySimpleWithReflect: IProjectTable = DatabaseOperatorByFactorySimpleWithReflect.createProjectTable()
+    val projectTableByFactorySimpleWithReflect: IProjectTable = FactoryDatabaseOperatorWithFactorySimpleAndReflect.createProjectTable()
     projectTableByFactorySimpleWithReflect.insert(project)
     projectTableByFactorySimpleWithReflect.getProject(id)
     println()

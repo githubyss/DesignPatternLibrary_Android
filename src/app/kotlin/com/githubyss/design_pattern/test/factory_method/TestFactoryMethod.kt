@@ -8,10 +8,10 @@ import com.githubyss.design_pattern.test.entity.math_operator.IOperatorDyadic
 import com.githubyss.design_pattern.test.entity.math_operator.IOperatorUnary
 import com.githubyss.design_pattern.test.entity.ship.IShip
 import com.githubyss.design_pattern.test.entity.ship.ShipWar
-import com.githubyss.design_pattern.test.factory_method.fruit.FactoryVegetableCucumber
-import com.githubyss.design_pattern.test.factory_method.fruit.FactoryVegetablePotato
-import com.githubyss.design_pattern.test.factory_method.fruit.FactoryVegetableTomato
-import com.githubyss.design_pattern.test.factory_method.fruit.IVegetable
+import com.githubyss.design_pattern.test.factory_method.vegetable.entity.IVegetable
+import com.githubyss.design_pattern.test.factory_method.vegetable.factory.FactoryVegetableCucumber
+import com.githubyss.design_pattern.test.factory_method.vegetable.factory.FactoryVegetablePotato
+import com.githubyss.design_pattern.test.factory_method.vegetable.factory.FactoryVegetableTomato
 
 
 /**

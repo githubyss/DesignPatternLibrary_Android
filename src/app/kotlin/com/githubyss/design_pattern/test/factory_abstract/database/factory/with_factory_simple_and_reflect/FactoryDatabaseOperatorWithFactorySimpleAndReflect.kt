@@ -1,5 +1,6 @@
 package com.githubyss.design_pattern.test.factory_abstract.database.factory.with_factory_simple_and_reflect
 
+import com.githubyss.design_pattern.BuildConfig
 import com.githubyss.design_pattern.test.factory_abstract.database.entity.ITable
 import com.githubyss.design_pattern.test.factory_abstract.database.entity.department.IDepartmentTable
 import com.githubyss.design_pattern.test.factory_abstract.database.entity.project.IProjectTable
@@ -18,15 +19,16 @@ import com.githubyss.design_pattern.test.util.createClass
 object FactoryDatabaseOperatorWithFactorySimpleAndReflect : IFactoryDatabase {
     private val PACKAGE_PATH = ITable::class.java.packageName
 
-    private const val CLASS_NAME_SUFFIX_DB_SQL_SERVER = "SqlServer"
-    private const val CLASS_NAME_SUFFIX_DB_ACCESS = "Access"
-    private const val CLASS_NAME_SUFFIX_DB_ORACLE = "Oracle"
+    private const val CLASS_NAME_SUFFIX_DATABASE_SQL_SERVER = "SqlServer"
+    private const val CLASS_NAME_SUFFIX_DATABASE_ACCESS = "Access"
+    private const val CLASS_NAME_SUFFIX_DATABASE_ORACLE = "Oracle"
 
     private const val CLASS_NAME_PREFIX_ENTITY_USER_TABLE = "user.UserTable"
     private const val CLASS_NAME_PREFIX_ENTITY_DEPARTMENT_TABLE = "department.DepartmentTable"
     private const val CLASS_NAME_PREFIX_ENTITY_PROJECT_TABLE = "project.ProjectTable"
 
-    private const val classNameSuffixDb = CLASS_NAME_SUFFIX_DB_ORACLE
+    // private const val classNameSuffixDatabase = CLASS_NAME_SUFFIX_DATABASE_ORACLE
+    private const val classNameSuffixDatabase = BuildConfig.classNameSuffixDatabase
 
 
     override fun createUserTable(): IUserTable {
@@ -60,6 +62,6 @@ object FactoryDatabaseOperatorWithFactorySimpleAndReflect : IFactoryDatabase {
     }
 
     private fun assembleClassName(classNamePrefixEntity: String): String {
-        return "$PACKAGE_PATH.$classNamePrefixEntity$classNameSuffixDb"
+        return "$PACKAGE_PATH.$classNamePrefixEntity$classNameSuffixDatabase"
     }
 }

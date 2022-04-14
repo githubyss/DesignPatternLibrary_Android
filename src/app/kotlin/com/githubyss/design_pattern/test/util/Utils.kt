@@ -2,7 +2,7 @@ package com.githubyss.design_pattern.test.util
 
 
 /**
- * ClassUtils
+ * Utils
  *
  * @author Ace Yan
  * @github githubyss
@@ -11,32 +11,14 @@ package com.githubyss.design_pattern.test.util
 
 /** ****************************** Properties ****************************** */
 
-private const val TAG: String = "ClassUtils"
+private const val TAG: String = "Utils"
 
 
 /** ****************************** Functions ****************************** */
 
 /** ******************** Creator ******************** */
 
-/**
- * Create Class of appointed Type.
- *
- * @param classNameWithPackagePath The whole class name with package path.
- * @return
- */
 inline fun <reified I> createClass(classNameWithPackagePath: String): I {
     val clazz: Class<out Any> = Class.forName(classNameWithPackagePath)
-    return clazz.newInstance() as I
-}
-
-/**
- * Create Class of appointed Type.
- *
- * @param packagePath The package path.
- * @param className The class name.
- * @return
- */
-inline fun <reified I> createClass(packagePath: String, className: String): I {
-    val clazz: Class<out Any> = Class.forName("$packagePath.$className")
     return clazz.newInstance() as I
 }

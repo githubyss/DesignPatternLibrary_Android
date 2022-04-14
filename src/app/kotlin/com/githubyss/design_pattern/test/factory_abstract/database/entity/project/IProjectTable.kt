@@ -1,7 +1,6 @@
 package com.githubyss.design_pattern.test.factory_abstract.database.entity.project
 
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.ITable
 
-interface IProjectTable {
-    fun insert(project: Project)
-    fun getProject(id: Int)
-}
+
+interface IProjectTable : ITable<Project>

@@ -1,5 +1,6 @@
 package com.githubyss.design_pattern.test.factory_abstract.database.factory.with_factory_simple_and_reflect
 
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.ITable
 import com.githubyss.design_pattern.test.factory_abstract.database.entity.department.IDepartmentTable
 import com.githubyss.design_pattern.test.factory_abstract.database.entity.project.IProjectTable
 import com.githubyss.design_pattern.test.factory_abstract.database.entity.user.IUserTable
@@ -15,7 +16,7 @@ import com.githubyss.design_pattern.test.util.createClass
  * @createdTime 2022/04/13 11:15:13
  */
 object FactoryDatabaseOperatorWithFactorySimpleAndReflect : IFactoryDatabase {
-    private const val PACKAGE_PATH = "com.githubyss.design_pattern.test.factory_abstract.database.entity"
+    private val PACKAGE_PATH = ITable::class.java.packageName
 
     private const val CLASS_NAME_SUFFIX_DB_SQL_SERVER = "SqlServer"
     private const val CLASS_NAME_SUFFIX_DB_ACCESS = "Access"

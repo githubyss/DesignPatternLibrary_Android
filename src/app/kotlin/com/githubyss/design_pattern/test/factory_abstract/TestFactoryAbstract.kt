@@ -59,15 +59,15 @@ fun factoryAbstract() {
 
     val userTable: IUserTable = factoryDatabase.createUserTable()
     userTable.insert(user)
-    userTable.getUser(id)
+    userTable.getTableContent(id)
 
     val departmentTable: IDepartmentTable = factoryDatabase.createDepartmentTable()
     departmentTable.insert(department)
-    departmentTable.getDepartment(id)
+    departmentTable.getTableContent(id)
 
     val projectTable: IProjectTable = factoryDatabase.createProjectTable()
     projectTable.insert(project)
-    projectTable.getProject(id)
+    projectTable.getTableContent(id)
     println()
 
 
@@ -97,15 +97,15 @@ fun factoryAbstract() {
 
     val userTableByFactorySimple: IUserTable = FactoryDatabaseOperatorWithFactorySimple.createUserTable()
     userTableByFactorySimple.insert(user)
-    userTableByFactorySimple.getUser(id)
+    userTableByFactorySimple.getTableContent(id)
 
     val departmentTableByFactorySimple: IDepartmentTable = FactoryDatabaseOperatorWithFactorySimple.createDepartmentTable()
     departmentTableByFactorySimple.insert(department)
-    departmentTableByFactorySimple.getDepartment(id)
+    departmentTableByFactorySimple.getTableContent(id)
 
     val projectTableByFactorySimple: IProjectTable = FactoryDatabaseOperatorWithFactorySimple.createProjectTable()
     projectTableByFactorySimple.insert(project)
-    projectTableByFactorySimple.getProject(id)
+    projectTableByFactorySimple.getTableContent(id)
     println()
 
 
@@ -133,15 +133,15 @@ fun factoryAbstract() {
 
     val userTableByFactorySimpleWithReflect: IUserTable = FactoryDatabaseOperatorWithFactorySimpleAndReflect.createUserTable()
     userTableByFactorySimpleWithReflect.insert(user)
-    userTableByFactorySimpleWithReflect.getUser(id)
+    userTableByFactorySimpleWithReflect.getTableContent(id)
 
     val departmentTableByFactorySimpleWithReflect: IDepartmentTable = FactoryDatabaseOperatorWithFactorySimpleAndReflect.createDepartmentTable()
     departmentTableByFactorySimpleWithReflect.insert(department)
-    departmentTableByFactorySimpleWithReflect.getDepartment(id)
+    departmentTableByFactorySimpleWithReflect.getTableContent(id)
 
     val projectTableByFactorySimpleWithReflect: IProjectTable = FactoryDatabaseOperatorWithFactorySimpleAndReflect.createProjectTable()
     projectTableByFactorySimpleWithReflect.insert(project)
-    projectTableByFactorySimpleWithReflect.getProject(id)
+    projectTableByFactorySimpleWithReflect.getTableContent(id)
     println()
 
 

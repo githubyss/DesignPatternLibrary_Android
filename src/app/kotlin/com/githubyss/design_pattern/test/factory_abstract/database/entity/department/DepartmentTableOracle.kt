@@ -1,4 +1,4 @@
-package com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.department
+package com.githubyss.design_pattern.test.factory_abstract.database.entity.department
 
 
 class DepartmentTableOracle : IDepartmentTable {

@@ -1,4 +1,4 @@
-package com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.project
+package com.githubyss.design_pattern.test.factory_abstract.database.entity.project
 
 
 class ProjectTableAccess : IProjectTable {

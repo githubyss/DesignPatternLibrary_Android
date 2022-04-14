@@ -1,16 +1,16 @@
 package com.githubyss.design_pattern.test.factory_abstract
 
 import com.githubyss.design_pattern.test.PREFIX
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.department.Department
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.department.IDepartmentTable
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.project.IProjectTable
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.project.Project
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.user.IUserTable
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.entity.user.User
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.IFactoryDatabase
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.normal_abstract.FactoryDatabaseSqlServer
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.with_factory_simple.FactoryDatabaseOperatorWithFactorySimple
-import com.githubyss.design_pattern.test.factory_abstract.database_operator.factory.with_factory_simple_and_reflect.FactoryDatabaseOperatorWithFactorySimpleAndReflect
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.department.Department
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.department.IDepartmentTable
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.project.IProjectTable
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.project.Project
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.user.IUserTable
+import com.githubyss.design_pattern.test.factory_abstract.database.entity.user.User
+import com.githubyss.design_pattern.test.factory_abstract.database.factory.IFactoryDatabase
+import com.githubyss.design_pattern.test.factory_abstract.database.factory.normal_abstract.FactoryDatabaseSqlServer
+import com.githubyss.design_pattern.test.factory_abstract.database.factory.with_factory_simple.FactoryDatabaseOperatorWithFactorySimple
+import com.githubyss.design_pattern.test.factory_abstract.database.factory.with_factory_simple_and_reflect.FactoryDatabaseOperatorWithFactorySimpleAndReflect
 import com.githubyss.design_pattern.test.factory_abstract.vegetable.entity.cucumber.IVegetableCucumber
 import com.githubyss.design_pattern.test.factory_abstract.vegetable.entity.potato.IVegetablePotato
 import com.githubyss.design_pattern.test.factory_abstract.vegetable.entity.tomato.IVegetableTomato

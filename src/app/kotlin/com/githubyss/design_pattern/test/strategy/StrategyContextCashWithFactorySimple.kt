@@ -6,8 +6,8 @@ import com.githubyss.design_pattern.test.entity.cash.CashStrategyReturn
 import com.githubyss.design_pattern.test.entity.cash.ICashStrategy
 
 
-class StrategyContextCashFactorySimple(private var type: String) {
-    fun acceptCash(money: Double): Double {
+class StrategyContextCashWithFactorySimple(private var type: String) : ICashStrategy {
+    override fun acceptCash(money: Double): Double {
         val cashStrategy: ICashStrategy = when (type) {
             "正常收费" -> CashStrategyNormal()
             "打8折" -> CashStrategyRebate(0.8)

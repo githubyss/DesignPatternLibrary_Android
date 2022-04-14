@@ -5,7 +5,7 @@ import com.githubyss.design_pattern.factory.FactoryReflectInline
 import com.githubyss.design_pattern.factory.IFactoryReflect
 
 
-object PersonBuilderDirectorByFactoryMethodReflect {
+object PersonBuilderDirectorWithFactoryMethod {
     inline fun <reified B : PersonBuilderAbstract> buildByJClassInline(canvas: DrawCanvas, paint: DrawPaint) {
         val factory: FactoryReflectInline<PersonBuilderAbstract> = FactoryReflectInline<PersonBuilderAbstract>()
         val builder: PersonBuilderAbstract = factory.create<B>(canvas, paint)

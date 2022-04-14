@@ -4,7 +4,7 @@ import com.githubyss.design_pattern.factory.FactoryReflectInline
 import com.githubyss.design_pattern.test.entity.cash.ICashStrategy
 
 
-object StrategyContextCashFactoryMethodReflect {
+object StrategyContextCashWithFactoryMethodReflect {
     inline fun <reified B : ICashStrategy> acceptCash(money: Double, moneyRebate: Double? = null, moneyCondition: Double? = null, moneyReturn: Double? = null): Double {
         val factory: FactoryReflectInline<ICashStrategy> = FactoryReflectInline<ICashStrategy>()
         val cashStrategy: ICashStrategy = when {

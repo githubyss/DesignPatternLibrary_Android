@@ -25,12 +25,12 @@ fun strategy() {
     println()
 
 
-    val strategyCashNormalFactorySimple: StrategyContextCashFactorySimple = StrategyContextCashFactorySimple("正常收费")
-    val strategyCashRebateFactorySimple: StrategyContextCashFactorySimple = StrategyContextCashFactorySimple("打8折")
-    val strategyCashReturnFactorySimple: StrategyContextCashFactorySimple = StrategyContextCashFactorySimple("满300返100")
-    strategyCashNormalFactorySimple.acceptCash(MONEY)
-    strategyCashRebateFactorySimple.acceptCash(MONEY)
-    strategyCashReturnFactorySimple.acceptCash(MONEY)
+    val strategyCashNormalWithFactorySimple: StrategyContextCashWithFactorySimple = StrategyContextCashWithFactorySimple("正常收费")
+    val strategyCashRebateWithFactorySimple: StrategyContextCashWithFactorySimple = StrategyContextCashWithFactorySimple("打8折")
+    val strategyCashReturnWithFactorySimple: StrategyContextCashWithFactorySimple = StrategyContextCashWithFactorySimple("满300返100")
+    strategyCashNormalWithFactorySimple.acceptCash(MONEY)
+    strategyCashRebateWithFactorySimple.acceptCash(MONEY)
+    strategyCashReturnWithFactorySimple.acceptCash(MONEY)
     println()
 
 
@@ -39,8 +39,8 @@ fun strategy() {
     println()
 
 
-    StrategyContextCashFactoryMethodReflect.acceptCash<CashStrategyNormal>(money = MONEY)
-    StrategyContextCashFactoryMethodReflect.acceptCash<CashStrategyRebate>(money = MONEY, moneyRebate = MONEY_REBATE)
-    StrategyContextCashFactoryMethodReflect.acceptCash<CashStrategyReturn>(money = MONEY, moneyCondition = MONEY_CONDITION, moneyReturn = MONEY_RETURN)
+    StrategyContextCashWithFactoryMethodReflect.acceptCash<CashStrategyNormal>(money = MONEY)
+    StrategyContextCashWithFactoryMethodReflect.acceptCash<CashStrategyRebate>(money = MONEY, moneyRebate = MONEY_REBATE)
+    StrategyContextCashWithFactoryMethodReflect.acceptCash<CashStrategyReturn>(money = MONEY, moneyCondition = MONEY_CONDITION, moneyReturn = MONEY_RETURN)
     println()
 }

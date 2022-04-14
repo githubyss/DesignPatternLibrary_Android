@@ -57,14 +57,14 @@ fun builder() {
     println()
 
 
-    PersonBuilderDirectorByFactoryMethodReflect.buildByJClassInline<PersonBuilderThin>(canvas, paint)
-    PersonBuilderDirectorByFactoryMethodReflect.buildByKClassInline<PersonBuilderFat>(canvas, paint)
-    PersonBuilderDirectorByFactoryMethodReflect.buildByJClass<PersonBuilderThin>(canvas, paint)
-    PersonBuilderDirectorByFactoryMethodReflect.buildByKClass<PersonBuilderFat>(canvas, paint)
+    PersonBuilderDirectorWithFactoryMethod.buildByJClassInline<PersonBuilderThin>(canvas, paint)
+    PersonBuilderDirectorWithFactoryMethod.buildByKClassInline<PersonBuilderFat>(canvas, paint)
+    PersonBuilderDirectorWithFactoryMethod.buildByJClass<PersonBuilderThin>(canvas, paint)
+    PersonBuilderDirectorWithFactoryMethod.buildByKClass<PersonBuilderFat>(canvas, paint)
     println()
 
 
-    ProductBuilderDirectorByFactoryMethodReflect.build<ProductBuilderConcrete1>()?.show()
-    ProductBuilderDirectorByFactoryMethodReflect.build<ProductBuilderConcrete2>()?.show()
+    ProductBuilderDirectorWithFactoryMethodReflect.build<ProductBuilderConcrete1>()?.show()
+    ProductBuilderDirectorWithFactoryMethodReflect.build<ProductBuilderConcrete2>()?.show()
     println()
 }

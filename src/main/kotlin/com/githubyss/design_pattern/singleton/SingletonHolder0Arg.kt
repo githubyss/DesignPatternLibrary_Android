@@ -23,13 +23,13 @@ package com.githubyss.design_pattern.singleton
  * @github githubyss
  * @createdTime 2022/03/14 17:20:04
  */
-open class SingletonHolder0Arg<out P>(creator: () -> P) {
-    private var creator: (() -> P)? = creator
+open class SingletonHolder0Arg<out S>(creator: () -> S) {
+    private var creator: (() -> S)? = creator
 
     @Volatile
-    private var instance: P? = null
+    private var instance: S? = null
 
-    fun getInstance(): P {
+    fun getInstance(): S {
         val i = instance
         if (i != null) {
             return i
@@ -50,7 +50,7 @@ open class SingletonHolder0Arg<out P>(creator: () -> P) {
     }
 
     // 对上述方法的一种更简洁的写法
-    fun getInstance2(): P {
+    fun getInstance2(): S {
         return instance ?: synchronized(this) {
             instance ?: creator!!().apply {
                 instance = this
@@ -59,8 +59,8 @@ open class SingletonHolder0Arg<out P>(creator: () -> P) {
     }
 
     // lazy写法
-    fun getInstance3(): P {
-        val instance: P by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+    fun getInstance3(): S {
+        val instance: S by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             creator!!()
         }
         return instance

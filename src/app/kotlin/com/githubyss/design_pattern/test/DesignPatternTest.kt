@@ -1,17 +1,8 @@
 package com.githubyss.design_pattern.test
 
-import com.githubyss.design_pattern.test.builder.builder
-import com.githubyss.design_pattern.test.decorator.decorator
-import com.githubyss.design_pattern.test.facade.facade
-import com.githubyss.design_pattern.test.factory_abstract.factoryAbstract
-import com.githubyss.design_pattern.test.factory_method.factoryMethod
 import com.githubyss.design_pattern.test.factory_method.factoryMethodReflect
-import com.githubyss.design_pattern.test.factory_simple.factorySimple
-import com.githubyss.design_pattern.test.observer.observer
-import com.githubyss.design_pattern.test.prototype.prototype
-import com.githubyss.design_pattern.test.proxy.proxy
+import com.githubyss.design_pattern.test.singleton.singleton
 import com.githubyss.design_pattern.test.strategy.strategy
-import com.githubyss.design_pattern.test.template_method.templateMethod
 
 
 /**
@@ -84,16 +75,17 @@ fun main(args: Array<String>) {
     println(args)
     println()
 
-    factorySimple()
-    factoryMethod()
+    // factorySimple()
+    // factoryMethod()
     factoryMethodReflect()
-    factoryAbstract()
+    // factoryAbstract()
     strategy()
-    decorator()
-    proxy()
-    prototype()
-    templateMethod()
-    facade()
-    builder()
-    observer()
+    // decorator()
+    // proxy()
+    // prototype()
+    // templateMethod()
+    // facade()
+    // builder()
+    // observer()
+    singleton()
 }

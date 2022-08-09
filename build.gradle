@@ -97,4 +97,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation dependenciesLib.kotlin_reflect
+    implementation dependenciesLib.androidx_core_ktx
 }

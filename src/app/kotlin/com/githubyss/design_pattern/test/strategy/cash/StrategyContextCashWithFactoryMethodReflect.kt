@@ -1,4 +1,4 @@
-package com.githubyss.design_pattern.test.strategy
+package com.githubyss.design_pattern.test.strategy.cash
 
 import com.githubyss.design_pattern.factory.FactoryReflectInline
 import com.githubyss.design_pattern.test.entity.cash.ICashStrategy

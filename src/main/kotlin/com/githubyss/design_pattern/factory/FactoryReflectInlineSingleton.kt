@@ -7,7 +7,7 @@ import kotlin.reflect.full.createInstance
 
 
 /**
- * FactoryReflectInline
+ * FactoryReflectInlineSingleton
  *
  * 通过反射构建具体工厂。
  * Inline 函数实现，可以根据传入的泛型，确定待创建的具体类的 Class 实例。
@@ -16,12 +16,10 @@ import kotlin.reflect.full.createInstance
  *
  * @author Ace Yan
  * @github githubyss
- * @createdTime 2022/03/09 15:46:13
+ * @createdTime 2022/08/01 18:06:19
  */
-class FactoryReflectInline<I> {
-    companion object {
-        private val TAG = FactoryReflectInline::class.java.simpleName
-    }
+object FactoryReflectInlineSingleton {
+    private val TAG = FactoryReflectInlineSingleton::class.java.simpleName
 
     /**
      * 构建实例
@@ -38,7 +36,7 @@ class FactoryReflectInline<I> {
      * @param byKClass
      * @return
      */
-    inline fun <reified E : I> create(vararg initArgs: Any = emptyArray(), byKClass: Boolean = false): E {
+    inline fun <reified E> create(vararg initArgs: Any = emptyArray(), byKClass: Boolean = false): E {
         var entity: E? = null
         val argsSize = initArgs.size
         var argsSizeMatched: Boolean = false

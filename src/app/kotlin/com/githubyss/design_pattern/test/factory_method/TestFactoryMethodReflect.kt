@@ -1,12 +1,7 @@
 package com.githubyss.design_pattern.test.factory_method
 
-import com.githubyss.design_pattern.factory.FactoryReflect
-import com.githubyss.design_pattern.factory.FactoryReflectInline
-import com.githubyss.design_pattern.factory.IFactoryReflect
+import com.githubyss.design_pattern.factory.*
 import com.githubyss.design_pattern.test.*
-import com.githubyss.design_pattern.test.entity.car.CarJeep
-import com.githubyss.design_pattern.test.entity.car.CarSport
-import com.githubyss.design_pattern.test.entity.car.ICar
 import com.githubyss.design_pattern.test.entity.cash.CashStrategyNormal
 import com.githubyss.design_pattern.test.entity.cash.CashStrategyRebate
 import com.githubyss.design_pattern.test.entity.cash.CashStrategyReturn
@@ -25,30 +20,68 @@ import com.githubyss.design_pattern.test.factory_method.vegetable.entity.Vegetab
 
 
 fun factoryMethodReflect() {
-    println("$PREFIX FactoryMethodReflect 工厂方法模式（反射实现）")
+    println("$PREFIX FactoryMethodReflect 工厂方法模式（Reflect）（对于具体类 Something，需要传入泛型 Something，并且需要传入它的 Class 实例 Something::class.java）")
     println()
 
-
-    val shipCruise: IShip = FactoryReflect<IShip>().create<ShipCruise>(ShipCruise::class.java)
+    val shipCruise = FactoryReflect<IShip>().create<ShipCruise>(ShipCruise::class.java)
     shipCruise.weighAnchor()
     shipCruise.dropAnchor()
 
-    val shipWar: IShip = FactoryReflect<IShip>().create<ShipWar>(ShipWar::class)
+    val shipWar = FactoryReflect<IShip>().create<ShipWar>(ShipWar::class)
     shipWar.weighAnchor()
     shipWar.dropAnchor()
-    (shipWar as ShipWar).launchMissile()
+    shipWar.launchMissile()
     println()
 
 
-    val carSport: ICar = FactoryReflectInline<ICar>().create<CarSport>()
-    carSport.drive()
-    carSport.selfNavigation()
 
-    val carJeep: ICar = FactoryReflectInline<ICar>().create<CarJeep>()
-    carJeep.drive()
-    carJeep.selfNavigation()
+    println("$PREFIX FactoryMethodReflect 工厂方法模式（Reflect + Inline）（对于具体类 Something，传入泛型 Something）")
     println()
 
+    val shipCruiseInline = FactoryReflectInline<IShip>().create<ShipCruise>()
+    shipCruiseInline.weighAnchor()
+    shipCruiseInline.dropAnchor()
+
+    val shipWarInline = FactoryReflectInline<ShipWar>().create<ShipWar>()
+    shipWarInline.weighAnchor()
+    shipWarInline.dropAnchor()
+    shipWarInline.launchMissile()
+    println()
+
+
+
+    println("$PREFIX FactoryMethodReflect 工厂方法模式（Reflect + Inline + Singleton）（对于具体类 Something，传入泛型 Something）")
+    println()
+
+    val shipCruiseInlineSingleton = FactoryReflectInlineSingleton.create<ShipCruise>()
+    shipCruiseInlineSingleton.weighAnchor()
+    shipCruiseInlineSingleton.dropAnchor()
+
+    val shipWarInlineSingleton = FactoryReflectInlineSingleton.create<ShipWar>()
+    shipWarInlineSingleton.weighAnchor()
+    shipWarInlineSingleton.dropAnchor()
+    shipWarInlineSingleton.launchMissile()
+    println()
+
+
+
+    println("$PREFIX FactoryMethodReflect 工厂方法模式（Reflect + Inline + 顶层方法）（对于具体类 Something，传入泛型 Something）")
+    println()
+
+    val shipCruiseInlineExt = create<ShipCruise>()
+    shipCruiseInlineExt.weighAnchor()
+    shipCruiseInlineExt.dropAnchor()
+
+    val shipWarInlineExt = create<ShipWar>()
+    shipWarInlineExt.weighAnchor()
+    shipWarInlineExt.dropAnchor()
+    shipWarInlineExt.launchMissile()
+    println()
+
+
+
+    println("$PREFIX FactoryMethodReflect 工厂方法模式（其他实现示例）")
+    println()
 
     val factoryOperatorUnary: FactoryReflectInline<IOperatorUnary> = FactoryReflectInline<IOperatorUnary>()
     val factoryOperatorDyadic: FactoryReflectInline<IOperatorDyadic> = FactoryReflectInline<IOperatorDyadic>()

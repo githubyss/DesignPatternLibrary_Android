@@ -10,6 +10,7 @@ package com.githubyss.design_pattern.test.singleton
  */
 class SingletonInnerStaticClassKt private constructor() {
     companion object {
+        val INSTANCE = Holder.INSTANCE
         fun getInstance() = Holder.INSTANCE
     }
 

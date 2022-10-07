@@ -88,4 +88,5 @@ fun main(args: Array<String>) {
     // builder()
     // observer()
     singleton()
+    singleton()
 }

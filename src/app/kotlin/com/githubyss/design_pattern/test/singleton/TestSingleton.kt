@@ -15,23 +15,24 @@ fun singleton() {
     println("$PREFIX Singleton 工厂方法模式（普通实现）")
     println()
 
-    println(SingletonStarve.getInstance().TAG)
-    println(SingletonStarveKt.getInstance().TAG)
+    println(SingletonSimpleStarve.getInstance())
+    println(SingletonSimpleStarveKotlinBytecode.getInstance())
+    println(SingletonSimpleStarveKt)
+    println(SingletonSimpleStarveKtLikeJava.getInstance())
 
-    println(SingletonLazyLoad.getInstance().TAG)
-    println(SingletonLazyLoadKt.INSTANCE.TAG)
-    println(SingletonLazyLoadKtLikeJava.getInstance().TAG)
+    println(SingletonSingleCheckLazyLoad.getInstance())
+    println(SingletonSingleCheckLazyLoadKt.getInstance())
+    println(SingletonSingleCheckLazyLoadKtLikeJava.getInstance())
 
-    println(SingletonLazySynchronized.getInstance().TAG)
-    println(SingletonLazySynchronizedKt.getInstance().TAG)
+    println(SingletonSingleCheckSynchronizedLazySynchronized.getInstance())
+    println(SingletonSingleCheckSynchronizedLazySynchronizedKt.getInstance())
 
-    println(SingletonDoubleCheck.getInstance().TAG)
-    println(SingletonDoubleCheckKt.INSTANCE.TAG)
-    println(SingletonDoubleCheckKtLikeJava.getInstance().TAG)
+    println(SingletonDoubleCheckSynchronized.getInstance())
+    println(SingletonDoubleCheckSynchronizedKt.getInstance())
+    println(SingletonDoubleCheckSynchronizedKtLikeJava.getInstance())
 
-    println(SingletonInnerStaticClass.getInstance().TAG)
-    println(SingletonInnerStaticClassKt.getInstance().TAG)
+    println(SingletonStaticInnerClass.getInstance())
+    println(SingletonStaticInnerClassKt.getInstance())
 
-    println(SingletonInnerStaticBlock.INSTANCE.TAG)
-    println(SingletonInnerStaticBlockKt.TAG)
+    println()
 }

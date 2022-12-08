@@ -21,15 +21,16 @@ import kotlin.reflect.full.createInstance
 object FactoryReflectInlineSingleton {
     private val TAG = FactoryReflectInlineSingleton::class.java.simpleName
 
+    inline fun <reified E> createByJClass(vararg initArgs: Any = emptyArray()) = create<E>(*initArgs, false)
+    inline fun <reified E> createByKClass(vararg initArgs: Any = emptyArray()) = create<E>(*initArgs, true)
+
     /**
      * 构建实例
      *
+     * FactoryReflectInline<I>().create<E>()
      * FactoryReflectInline<I>().create<E>(arg1, arg2)
-     *
      * FactoryReflectInline<I>().create<E>(arg1, arg2, true)
-     *
      * FactoryReflectInline<I>().create<E>(arrayOf(arg1, arg2), true)
-     *
      * FactoryReflectInline<I>().create<E>(initArgs = arrayOf(arg1, arg2), byKClass = true)
      *
      * @param initArgs
@@ -42,29 +43,25 @@ object FactoryReflectInlineSingleton {
         var argsSizeMatched: Boolean = false
 
         val clazz: Any = when (byKClass) {
-            true -> E::class
             false -> E::class.java
+            true -> E::class
         }
 
         try {
             when (argsSize) {
                 0 -> {
                     entity = when (clazz) {
-                        is Class<out Any> -> {
-                            clazz.newInstance() as E
-                            // Class.forName(clazz.name).newInstance() as E
+                        is Class<*> -> {
+                            clazz.newInstance()
+                            // Class.forName(clazz.name).newInstance()
                         }
-                        is KClass<out Any> -> {
-                            clazz.createInstance() as E
-                        }
-                        else -> {
-                            throw Exception("Type of clazz must be Class<*> or KClass<*>.")
-                        }
-                    }
+                        is KClass<*> -> clazz.createInstance()
+                        else -> throw Exception("Type of clazz must be Class<*> or KClass<*>.")
+                    } as E
                 }
                 else -> {
                     when (clazz) {
-                        is Class<out Any> -> {
+                        is Class<*> -> {
                             val constructors: Array<Constructor<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
@@ -80,7 +77,7 @@ object FactoryReflectInlineSingleton {
                                 }
                             }
                         }
-                        is KClass<out Any> -> {
+                        is KClass<*> -> {
                             val constructors: Collection<KFunction<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
@@ -96,9 +93,7 @@ object FactoryReflectInlineSingleton {
                                 }
                             }
                         }
-                        else -> {
-                            throw Exception("Type of clazz must be Class<*> or KClass<*>.")
-                        }
+                        else -> throw Exception("Type of clazz must be Class<*> or KClass<*>.")
                     }
 
                     if (!argsSizeMatched) throw Exception("No constructor in clazz.constructors match the args size.")

@@ -19,6 +19,6 @@ private const val TAG: String = "Utils"
 /** ******************** Creator ******************** */
 
 inline fun <reified I> createClass(classNameWithPackagePath: String): I {
-    val clazz: Class<out Any> = Class.forName(classNameWithPackagePath)
+    val clazz: Class<*> = Class.forName(classNameWithPackagePath)
     return clazz.newInstance() as I
 }

@@ -23,6 +23,9 @@ class FactoryReflect<I> : IFactoryReflect<I> {
         private val TAG: String = FactoryReflect::class.java.simpleName
     }
 
+    fun <E : I> createByJClass(clazz: Class<*>, vararg initArgs: Any = emptyArray()) = create<E>(clazz, *initArgs)
+    fun <E : I> createByKClass(clazz: KClass<*>, vararg initArgs: Any = emptyArray()) = create<E>(clazz, *initArgs)
+
     /**
      * 构建实例
      *
@@ -30,12 +33,11 @@ class FactoryReflect<I> : IFactoryReflect<I> {
      * FactoryReflect<I>().create<E>(E::class.java)
      *
      * FactoryReflect<I>().create<E>(E::class, arg1, arg2)
-     * FactoryReflect<I>().create<E>(E::class.java, arg1, arg2)
-     *
      * FactoryReflect<I>().create<E>(E::class, arrayOf(arg1, arg2))
-     * FactoryReflect<I>().create<E>(E::class.java, arrayOf(arg1, arg2))
-     *
      * FactoryReflect<I>().create<E>(clazz = E::class, initArgs = arrayOf(arg1, arg2))
+     *
+     * FactoryReflect<I>().create<E>(E::class.java, arg1, arg2)
+     * FactoryReflect<I>().create<E>(E::class.java, arrayOf(arg1, arg2))
      * FactoryReflect<I>().create<E>(clazz = E::class.java, initArgs = arrayOf(arg1, arg2))
      *
      * @param clazz
@@ -45,27 +47,23 @@ class FactoryReflect<I> : IFactoryReflect<I> {
     override fun <E : I> create(clazz: Any, vararg initArgs: Any): E {
         var entity: E? = null
         val argsSize = initArgs.size
-        var argsSizeMatched: Boolean = false
+        var argsSizeMatched = false
 
         try {
             when (argsSize) {
                 0 -> {
                     entity = when (clazz) {
-                        is Class<out Any> -> {
-                            clazz.newInstance() as E
-                            // Class.forName(clazz.name).newInstance() as E
+                        is Class<*> -> {
+                            clazz.newInstance()
+                            // Class.forName(clazz.name).newInstance()
                         }
-                        is KClass<out Any> -> {
-                            clazz.createInstance() as E
-                        }
-                        else -> {
-                            throw Exception("Type of clazz must be Class<*> or KClass<*>.")
-                        }
-                    }
+                        is KClass<*> -> clazz.createInstance()
+                        else -> throw Exception("Type of clazz must be Class<*> or KClass<*>.")
+                    } as E
                 }
                 else -> {
                     when (clazz) {
-                        is Class<out Any> -> {
+                        is Class<*> -> {
                             val constructors: Array<Constructor<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
@@ -81,7 +79,7 @@ class FactoryReflect<I> : IFactoryReflect<I> {
                                 }
                             }
                         }
-                        is KClass<out Any> -> {
+                        is KClass<*> -> {
                             val constructors: Collection<KFunction<*>> = clazz.constructors
                             constructors.forEach {
                                 if (it.parameters.size == argsSize) {
@@ -97,9 +95,7 @@ class FactoryReflect<I> : IFactoryReflect<I> {
                                 }
                             }
                         }
-                        else -> {
-                            throw Exception("Type of clazz must be Class<*> or KClass<*>.")
-                        }
+                        else -> throw Exception("Type of clazz must be Class<*> or KClass<*>.")
                     }
 
                     if (!argsSizeMatched) throw Exception("No constructor in clazz.constructors match the args size.")
